@@ -64,7 +64,12 @@ class HomeScreen extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        height: 120,
+        height: 150,
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.white, width: 1),
+          borderRadius: BorderRadius.circular(12),
+
+        ),
         child: ListView(
           scrollDirection: Axis.horizontal,
           padding: EdgeInsets.symmetric(horizontal: 16),
@@ -75,38 +80,55 @@ class HomeScreen extends StatelessWidget {
               //   context,
               //   MaterialPageRoute(builder: (context) => Page1()),
               // );
-            }),
-            _buildMenuIcon('assets/icon2.png', () {
+            },'Menu 1', 'Description'),
+            _buildMenuIcon('Images//Plants/potato.png', () {
               // Add navigation logic for menu icon 2
-            }),
+            },'Potato', 'Description'),
             _buildMenuIcon('assets/icon3.png', () {
               // Add navigation logic for menu icon 3
-            }),
+            },'Menu 1', 'Description'),
             _buildMenuIcon('assets/icon4.png', () {
               // Add navigation logic for menu icon 4
-            }),
+            },'Menu 1', 'Description'),
             _buildMenuIcon('assets/icon5.png', () {
               // Add navigation logic for menu icon 5
-            }),
+            },'Menu 1', 'Description'),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildMenuIcon(String imagePath, VoidCallback onTap) {
+  Widget _buildMenuIcon(String imagePath, VoidCallback onTap, String title, String additionalText) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: EdgeInsets.all(8),
-        width: 80,
+        width: 100,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.white, width: 2),
+          border: Border.all(color: Colors.white, width: 1),
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Image.asset(imagePath),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(imagePath),
+            SizedBox(height: 8),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+
+          ],
+        ),
       ),
     );
   }
+
+
 
 }
