@@ -21,7 +21,7 @@ class PlantLandingPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'Images/logo.png', 
+                      'Images/logo.png',
                       width: 200,
                       height: 200,
                     ),
