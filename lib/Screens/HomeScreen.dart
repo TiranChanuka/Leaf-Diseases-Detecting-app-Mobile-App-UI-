@@ -61,39 +61,38 @@ class HomeScreen extends StatelessWidget {
 
 
   Widget _buildMenuSection() {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Container(
-        height: 150,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.white, width: 1),
-          borderRadius: BorderRadius.circular(12),
-
-        ),
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          children: [
-            _buildMenuIcon('assets/icon1.png', () {
-              // Add navigation logic for menu icon 1
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => Page1()),
-              // );
-            },'Menu 1', 'Description'),
-            _buildMenuIcon('Images//Plants/potato.png', () {
-              // Add navigation logic for menu icon 2
-            },'Potato', 'Description'),
-            _buildMenuIcon('assets/icon3.png', () {
-              // Add navigation logic for menu icon 3
-            },'Menu 1', 'Description'),
-            _buildMenuIcon('assets/icon4.png', () {
-              // Add navigation logic for menu icon 4
-            },'Menu 1', 'Description'),
-            _buildMenuIcon('assets/icon5.png', () {
-              // Add navigation logic for menu icon 5
-            },'Menu 1', 'Description'),
-          ],
+    return Container(
+      width: double.infinity,
+      height: 600,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.white, width: 2),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          height: 150,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            children: [
+              _buildMenuIcon('Images/Plants/tomato.png', () {
+                // Add navigation logic for menu icon 1
+              }, 'Tomato', 'Description'),
+              _buildMenuIcon('Images/Plants/potato.png', () {
+                // Add navigation logic for menu icon 2
+              }, 'Potato', 'Description'),
+              _buildMenuIcon('Images/Plants/grapes.png', () {
+                // Add navigation logic for menu icon 3
+              }, 'Grapes', 'Description'),
+              _buildMenuIcon('assets/icon4.png', () {
+                // Add navigation logic for menu icon 4
+              }, 'Menu 1', 'Description'),
+              _buildMenuIcon('assets/icon5.png', () {
+                // Add navigation logic for menu icon 5
+              }, 'Menu 1', 'Description'),
+            ],
+          ),
         ),
       ),
     );
