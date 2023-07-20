@@ -64,6 +64,7 @@ flutter:
      - Images/Plants/potato.png
      - Images/Plants/tomato.png
      - Images/Plants/grapes.png
+     - Images/LogoNew.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
