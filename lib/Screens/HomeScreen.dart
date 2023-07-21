@@ -52,10 +52,12 @@ class HomeScreen extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: Container(
-        padding: EdgeInsets.only(top: 100),
+        width: 150,
+        height: 150,
+
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('Images/LogoNew.png'), // Background image
+            image: AssetImage('Images/logoWhite.png'), // Background image
           ),
         ),
       ),
@@ -107,6 +109,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   _buildMenuIcon('Images/Plants/tomato.png', () {
                     // Add navigation logic for menu icon 1
+
                   }, 'Tomato', 'Description'),
                   _buildMenuIcon('Images/Plants/potato.png', () {
                     // Add navigation logic for menu icon 2
