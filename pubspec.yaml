@@ -38,6 +38,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  image_picker: ^0.8.4+4
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -64,7 +65,7 @@ flutter:
      - Images/Plants/potato.png
      - Images/Plants/tomato.png
      - Images/Plants/grapes.png
-     - Images/LogoNew.png
+     - Images/logoWhite.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
