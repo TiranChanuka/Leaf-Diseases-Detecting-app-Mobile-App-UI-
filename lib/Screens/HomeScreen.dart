@@ -1,4 +1,3 @@
-// import 'dart:js';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -19,7 +18,7 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: _buildMenuSection(),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -54,7 +53,6 @@ class HomeScreen extends StatelessWidget {
       child: Container(
         width: 150,
         height: 150,
-
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('Images/logoWhite.png'), // Background image
@@ -70,18 +68,16 @@ class HomeScreen extends StatelessWidget {
       height: 450,
       decoration: BoxDecoration(
         color: fbColor.withOpacity(0.18),
-        // backgroundBlendMode: BlendMode.overlay,
         border: Border.all(color: Colors.white, width: 0.8),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        // Align children to the left
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
-              '\nMenu Section\n', // Your desired topic for the section
+              '\nMenu Section\n',
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
@@ -92,39 +88,34 @@ class HomeScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ex nec mauris faucibus, id ullamcorper ipsum cursus. Nunc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit amet egestas luctus\nfelis nisl interdum ex, at rhoncus velit ligula ac velit. Vivamus eget fermentum ex.\n',
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit.rsus. Nunc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit amet egestas luctus\nfelis nisl interdum ex, at rhoncus velit ligula ac velit. Vivamus eget fermentum ex.\n',
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.white,
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 150,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.symmetric(horizontal: 5),
-                children: [
-                  _buildMenuIcon('Images/Plants/tomato.png', () {
-                    // Add navigation logic for menu icon 1
-
-                  }, 'Tomato', 'Description'),
-                  _buildMenuIcon('Images/Plants/potato.png', () {
-                    // Add navigation logic for menu icon 2
-                  }, 'Potato', 'Description'),
-                  _buildMenuIcon('Images/Plants/grapes.png', () {
-                    // Add navigation logic for menu icon 3
-                  }, 'Grapes', 'Description'),
-                  _buildMenuIcon('assets/icon4.png', () {
-                    // Add navigation logic for menu icon 4
-                  }, 'Tea', 'Description'),
-                  _buildMenuIcon('assets/icon5.png', () {
-                    // Add navigation logic for menu icon 5
-                  }, 'Cone', 'Description'),
-                ],
-              ),
+          Expanded(
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              children: [
+                _buildMenuIcon('Images/Plants/tomato.png', () {
+                  // Add navigation logic for menu icon 1
+                }, 'Tomato', 'Description'),
+                _buildMenuIcon('Images/Plants/potato.png', () {
+                  // Add navigation logic for menu icon 2
+                }, 'Potato', 'Description'),
+                _buildMenuIcon('Images/Plants/grapes.png', () {
+                  // Add navigation logic for menu icon 3
+                }, 'Grapes', 'Description'),
+                _buildMenuIcon('assets/icon4.png', () {
+                  // Add navigation logic for menu icon 4
+                }, 'Tea', 'Description'),
+                _buildMenuIcon('assets/icon5.png', () {
+                  // Add navigation logic for menu icon 5
+                }, 'Cone', 'Description'),
+              ],
             ),
           ),
         ],
@@ -132,8 +123,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuIcon(String imagePath, VoidCallback onTap, String title,
-      String additionalText) {
+  Widget _buildMenuIcon(String imagePath, VoidCallback onTap, String title, String additionalText) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
