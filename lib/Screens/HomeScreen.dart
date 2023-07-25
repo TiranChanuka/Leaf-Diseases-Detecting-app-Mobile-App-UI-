@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:plant_app/Colors.dart';
+import './ScanPage.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -16,7 +17,7 @@ class HomeScreen extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: _buildMenuSection(),
+              child: _buildMenuSection(context),
             ),
           ),
         ],
@@ -62,7 +63,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuSection() {
+  Widget _buildMenuSection(BuildContext context) {
     return Container(
       width: double.infinity,
       height: 450,
@@ -101,7 +102,10 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 5),
               children: [
                 _buildMenuIcon('Images/Plants/tomato.png', () {
-                  // Add navigation logic for menu icon 1
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ImagePickerPage()),
+                  );
                 }, 'Tomato', 'Description'),
                 _buildMenuIcon('Images/Plants/potato.png', () {
                   // Add navigation logic for menu icon 2
@@ -123,9 +127,12 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuIcon(String imagePath, VoidCallback onTap, String title, String additionalText) {
+  Widget _buildMenuIcon(String imagePath,
+      VoidCallback onTap,
+      String title,
+      String additionalText,) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap, // Use the provided onTap callback
       child: Container(
         margin: EdgeInsets.all(8),
         width: 100,
