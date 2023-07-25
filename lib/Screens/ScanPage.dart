@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -35,36 +35,41 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
       appBar: AppBar(
         title: Text('Image Picker Example'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _image != null
-                ? Image.file(
-              _image!,
-              height: 200,
-              width: 200,
-            )
-                : Icon(
-              Icons.image,
-              size: 100,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('Images/back.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0), // Adjust the blur intensity here
+          child: Container(
+            color: Colors.black.withOpacity(0.4), // Adjust the opacity of the blurred background
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: _takePicture,
+                    child: Text('Take Picture'),
+                  ),
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: _pickImage,
+                    child: Text('Pick Image from Gallery'),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _takePicture,
-              child: Text('Take Picture'),
-            ),
-            SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: _pickImage,
-              child: Text('Pick Image from Gallery'),
-            ),
-          ],
+          ),
         ),
       ),
     );
   }
 }
+
 
 void main() {
   runApp(MaterialApp(
