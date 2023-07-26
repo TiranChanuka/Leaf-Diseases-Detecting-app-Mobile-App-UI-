@@ -2,7 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:plant_app/Colors.dart';
-import './ScanPage.dart';
+import 'package:plant_app/ScanScreens/ScanPageCones.dart';
+import 'package:plant_app/ScanScreens/ScanPageGrapes.dart';
+import 'package:plant_app/ScanScreens/ScanPagePotato.dart';
+import 'package:plant_app/ScanScreens/ScanPageTea.dart';
+import '../ScanScreens/ScanPageTomato.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -104,21 +108,33 @@ class HomeScreen extends StatelessWidget {
                 _buildMenuIcon('Images/Plants/tomato.png', () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ImagePickerPage()),
+                    MaterialPageRoute(builder: (context) => ImagePickerPageTomato()),
                   );
                 }, 'Tomato', 'Description'),
                 _buildMenuIcon('Images/Plants/potato.png', () {
-                  // Add navigation logic for menu icon 2
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ImagePickerPagePotato()),
+                  );
                 }, 'Potato', 'Description'),
                 _buildMenuIcon('Images/Plants/grapes.png', () {
-                  // Add navigation logic for menu icon 3
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ImagePickerPageGrapes()),
+                  );
                 }, 'Grapes', 'Description'),
                 _buildMenuIcon('assets/icon4.png', () {
-                  // Add navigation logic for menu icon 4
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ImagePickerPageTea()),
+                  );
                 }, 'Tea', 'Description'),
-                _buildMenuIcon('assets/icon5.png', () {
-                  // Add navigation logic for menu icon 5
-                }, 'Cone', 'Description'),
+                _buildMenuIcon('Images/Plants/corn.png', () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ImagePickerPageCones()),
+                  );
+                }, 'Corn', 'Description'),
               ],
             ),
           ),
