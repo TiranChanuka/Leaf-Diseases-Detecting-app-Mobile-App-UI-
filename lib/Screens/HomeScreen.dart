@@ -7,6 +7,7 @@ import 'package:plant_app/ScanScreens/ScanPageGrapes.dart';
 import 'package:plant_app/ScanScreens/ScanPagePotato.dart';
 import 'package:plant_app/ScanScreens/ScanPageTea.dart';
 import '../ScanScreens/ScanPageTomato.dart';
+import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -50,6 +51,18 @@ class HomeScreen extends StatelessWidget {
     return Container(
       color: Colors.black.withOpacity(0.5),
     );
+  }
+
+  Future<void> _fetchHelloWorld() async {
+    final response = await http.get(Uri.parse('http://127.0.0.1:8000/ping'));
+
+    if (response.statusCode == 200) {
+      final responseData = response.body;
+      print(responseData);
+      // You can parse the JSON response if needed, but for this example, we're printing the entire response.
+    } else {
+      print('Failed to fetch "Hello, World!"');
+    }
   }
 
   Widget _buildTitle() {
