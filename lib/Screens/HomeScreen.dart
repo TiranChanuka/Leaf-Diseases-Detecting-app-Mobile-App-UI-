@@ -77,6 +77,7 @@ class HomeScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
+
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
@@ -174,4 +175,5 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
 }
