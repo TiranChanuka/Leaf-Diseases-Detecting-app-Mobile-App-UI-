@@ -42,18 +42,15 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // Add your desired action here when the back button is pressed
-            Navigator.pop(context); // This will navigate back to the previous screen
+            Navigator.pop(context);
           },
         ),
         flexibleSpace: Container(
-          padding: EdgeInsets.only(top: 10), // Adjust the top padding to position your logo
+          padding: EdgeInsets.only(top: 10),
           child: Center(
             child: Image.asset(
               'Images/logoWhite.png',
-              height: 100, // Set the desired height for your logo
-              // You can also adjust the width by using the width property
-              // width: 100,
+              height: 100,
             ),
           ),
         ),//  Add a back button icon
@@ -87,7 +84,7 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
                       minimumSize: Size(200, 80),
                       padding: EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20), // Set the border radius here
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                     child: Expanded(
@@ -107,7 +104,7 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10), // Add some space between the buttons
+                  SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: _pickImage,
                     style: ElevatedButton.styleFrom(
