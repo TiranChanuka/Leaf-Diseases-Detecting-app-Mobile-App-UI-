@@ -5,6 +5,11 @@ import 'package:plant_app/Colors.dart';
 
 
 class ResultShowing extends StatelessWidget {
+  final double confidence;
+  final String disease;
+  final String solution;
+
+  ResultShowing(this.confidence, this.disease, this.solution);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +43,7 @@ class ResultShowing extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: _buildMenuSection(context),
+              child: _buildMenuSection(context,confidence,disease,solution),
             ),
           ),
         ],
@@ -68,7 +73,7 @@ class ResultShowing extends StatelessWidget {
       color: Colors.black.withOpacity(0.5),
     );
   }
-  Widget _buildMenuSection(BuildContext context) {
+  Widget _buildMenuSection(BuildContext context, double confidence,String disease,String solution) {
     return Container(
       width: double.infinity,
       height: 450,
@@ -97,7 +102,7 @@ class ResultShowing extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
-              '\nBrown Leaf\n',
+              '\n$disease\n',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -108,7 +113,7 @@ class ResultShowing extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
-              'Solution :\nLorem ipsum dolor sit amet, consectetur adipiscing elit.rsus. Nunc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit amet egestas luctus\n',
+              '$solution\n',
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.black,
@@ -128,7 +133,7 @@ class ResultShowing extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    '99.9 Accurate'.toUpperCase(),
+                    '$confidence %'.toUpperCase(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,

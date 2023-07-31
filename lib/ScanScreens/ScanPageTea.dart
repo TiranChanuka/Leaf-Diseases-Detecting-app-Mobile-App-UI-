@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:plant_app/Colors.dart';
 
+import '../Screens/ResultShowingScreen.dart';
+
 class ImagePickerPageTea extends StatefulWidget {
   @override
   _ImagePickerPageState createState() => _ImagePickerPageState();
@@ -51,6 +53,16 @@ class _ImagePickerPageState extends State<ImagePickerPageTea> {
         final result = response.data;
         // Handle the response from the backend as needed
         print(result);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultShowing(
+                result['confidence'],
+                result['disease'],
+                result['solution']
+            ),
+          ),
+        );
       } else {
         print('Failed to upload image: ${response.statusMessage}');
       }

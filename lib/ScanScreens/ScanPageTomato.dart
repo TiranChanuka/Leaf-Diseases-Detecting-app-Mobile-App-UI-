@@ -52,6 +52,17 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
         final result = response.data;
         // Handle the response from the backend as needed
         print(result);
+        // Navigate to ResultPage with the result
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultShowing(
+              result['confidence'],
+              result['disease'],
+              result['solution']
+            ),
+          ),
+        );
       } else {
         print('Failed to upload image: ${response.statusMessage}');
       }
@@ -156,43 +167,6 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                           children: [
                             Text(
                               'Pick Image from Gallery',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(Icons.upload_file_sharp),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  //**************************just for testing result page **************************
-                  SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ResultShowing(),
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: bgColor,
-                      minimumSize: Size(240, 80),
-                      padding: EdgeInsets.symmetric(vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    child: Expanded(
-                      child: Container(
-                        width: 300,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Result Show',
                               style: TextStyle(fontSize: 18),
                             ),
                             SizedBox(width: 5),
