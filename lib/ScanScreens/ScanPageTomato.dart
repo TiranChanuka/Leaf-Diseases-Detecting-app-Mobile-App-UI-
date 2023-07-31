@@ -3,9 +3,7 @@ import 'dart:ui';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
-
-import '../Colors.dart';
+import 'package:plant_app/Colors.dart';
 
 class ImagePickerPageTomato extends StatefulWidget {
   @override
@@ -40,11 +38,12 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
       return; // No image to upload
     }
 
-    final url = 'http://10.0.2.2:8000/predict'; // Replace with your backend API endpoint
+    final url = 'http://10.0.2.2:8000/predict';
 
     try {
       final dio = Dio();
       final formData = FormData.fromMap({
+        'plant':'Tomato',
         'file': await MultipartFile.fromFile(_image!.path),
       });
       final response = await dio.post(url,data: formData);
@@ -105,24 +104,22 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                 children: [
                   Text(
                     'Tomato Leaf Identifier 🍅🍃🍂\n\n',
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 24, color: Colors.white,fontWeight:  FontWeight.bold,),
+
                   ),
+
                   SizedBox(height: 20),
-                  Expanded( // Place Expanded widget directly inside Column
-                    child: ElevatedButton(
-                      onPressed: _takePicture,
-                      style: ElevatedButton.styleFrom(
-                        primary: bgColor,
-                        minimumSize: Size(200, 80),
-                        padding: EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
+                  ElevatedButton(
+                    onPressed: _takePicture,
+                    style: ElevatedButton.styleFrom(
+                      primary: bgColor,
+                      minimumSize: Size(200, 80),
+                      padding: EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20), // Set the border radius here
                       ),
+                    ),
+                    child: Expanded(
                       child: Container(
                         width: 200,
                         child: Row(
@@ -140,17 +137,17 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                     ),
                   ),
                   SizedBox(height: 10), // Add some space between the buttons
-                  Expanded( // Place Expanded widget directly inside Column
-                    child: ElevatedButton(
-                      onPressed: _pickImage,
-                      style: ElevatedButton.styleFrom(
-                        primary: bgColor,
-                        minimumSize: Size(240, 80),
-                        padding: EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
+                  ElevatedButton(
+                    onPressed: _pickImage,
+                    style: ElevatedButton.styleFrom(
+                      primary: bgColor,
+                      minimumSize: Size(240, 80),
+                      padding: EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20), // Set the border radius here
                       ),
+                    ),
+                    child: Expanded(
                       child: Container(
                         width: 300,
                         child: Row(
@@ -173,9 +170,11 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
           ),
         ),
       ),
+
     );
   }
 }
+
 
 void main() {
   runApp(MaterialApp(
