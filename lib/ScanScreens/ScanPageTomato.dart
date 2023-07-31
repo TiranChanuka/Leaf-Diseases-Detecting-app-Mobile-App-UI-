@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:plant_app/Colors.dart';
+import '../Screens/ResultShowingScreen.dart';
 
 class ImagePickerPageTomato extends StatefulWidget {
   @override
@@ -64,24 +65,23 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(''), // Empty title to remove the default app bar text
+        title: Text(''),
         backgroundColor: Colors.transparent, // Transparent app bar background
         elevation: 0, // No shadow
         centerTitle: true, // Center the logo
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // Add your desired action here when the back button is pressed
             Navigator.pop(context); // This will navigate back to the previous screen
           },
         ),
         flexibleSpace: Container(
-          padding: EdgeInsets.only(top: 10), // Adjust the top padding to position your logo
+          padding: EdgeInsets.only(top: 10),
           child: Center(
             child: Image.asset(
               'Images/logoWhite.png',
-              height: 100, // Set the desired height for your logo
-              // You can also adjust the width by using the width property
+              height: 100,
+
               // width: 100,
             ),
           ),
@@ -109,6 +109,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                   ),
 
                   SizedBox(height: 20),
+
                   ElevatedButton(
                     onPressed: _takePicture,
                     style: ElevatedButton.styleFrom(
@@ -116,7 +117,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                       minimumSize: Size(200, 80),
                       padding: EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20), // Set the border radius here
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                     child: Expanded(
@@ -144,7 +145,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                       minimumSize: Size(240, 80),
                       padding: EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20), // Set the border radius here
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                     child: Expanded(
@@ -155,6 +156,43 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                           children: [
                             Text(
                               'Pick Image from Gallery',
+                              style: TextStyle(fontSize: 18),
+                            ),
+                            SizedBox(width: 5),
+                            Icon(Icons.upload_file_sharp),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  //**************************just for testing result page **************************
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ResultShowing(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: bgColor,
+                      minimumSize: Size(240, 80),
+                      padding: EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: Expanded(
+                      child: Container(
+                        width: 300,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Result Show',
                               style: TextStyle(fontSize: 18),
                             ),
                             SizedBox(width: 5),

@@ -30,8 +30,13 @@ dependencies:
   flutter:
     sdk: flutter
   device_preview: ^1.1.0
+<<<<<<< HEAD
   http: ^1.1.0
   dio: ^5.3.0
+=======
+  easy_sidemenu: ^0.5.0
+
+>>>>>>> 87102473819ab579ddff7644d7e2573902c4dee5
 
 
   # The following adds the Cupertino Icons font to your application.
