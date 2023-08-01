@@ -6,17 +6,37 @@ import 'package:plant_app/ScanScreens/ScanPageCones.dart';
 import 'package:plant_app/ScanScreens/ScanPageGrapes.dart';
 import 'package:plant_app/ScanScreens/ScanPagePotato.dart';
 import 'package:plant_app/ScanScreens/ScanPageTea.dart';
+import 'package:plant_app/Screens/SideMenu.dart';
 import '../ScanScreens/ScanPageTomato.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: Text(''),
+        backgroundColor: Colors.transparent, // Transparent app bar background
+        elevation: 0, // No shadow
+        centerTitle: true, // Center the logo
+        flexibleSpace: Container(
+          padding: EdgeInsets.only(top: 10),
+          child: Center(
+            child: Image.asset(
+              'Images/logoWhite.png',
+              height: 100,
+
+              // width: 100,
+            ),
+          ),
+        ),//  Add a back button icon
+      ),
       body: Stack(
         children: [
           _buildBackgroundImage(),
           _buildBlurOverlay(),
-          _buildTitle(),
+          // _buildTitle(),
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
@@ -52,20 +72,20 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTitle() {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        width: 150,
-        height: 150,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('Images/logoWhite.png'), // Background image
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget _buildTitle() {
+  //   return Align(
+  //     alignment: Alignment.topCenter,
+  //     child: Container(
+  //       width: 150,
+  //       height: 150,
+  //       decoration: BoxDecoration(
+  //         image: DecorationImage(
+  //           image: AssetImage('Images/logoWhite.png'), // Background image
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget _buildMenuSection(BuildContext context) {
     return Container(
