@@ -57,7 +57,7 @@ class ResultShowing extends StatelessWidget {
     );
   }
 
-<<<<<<< HEAD
+
   Widget _buildBackgroundImage() {
     return Container(
       decoration: BoxDecoration(
@@ -81,9 +81,7 @@ class ResultShowing extends StatelessWidget {
     );
   }
   Widget _buildMenuSection(BuildContext context, double confidence,String disease,String solution) {
-=======
-  Widget _buildMenuSection(BuildContext context) {
->>>>>>> main
+
     return Container(
       width: double.infinity,
       height: 450,
@@ -109,7 +107,7 @@ class ResultShowing extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
-              '\n$disease\n',
+              '\n$disease',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -143,7 +141,7 @@ class ResultShowing extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    '$confidence %'.toUpperCase(),
+                    'Accuracy $confidence %'.toUpperCase(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,

@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-<<<<<<< HEAD
+
   Future<void> _fetchHelloWorld() async {
     final response = await http.get(Uri.parse('http://127.0.0.1:8000/ping'));
 
@@ -86,8 +86,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-=======
->>>>>>> main
+
   Widget _buildMenuSection(BuildContext context) {
     return Container(
       width: double.infinity,
