@@ -7,6 +7,8 @@ import 'package:plant_app/ScanScreens/ScanPageGrapes.dart';
 import 'package:plant_app/ScanScreens/ScanPagePotato.dart';
 import 'package:plant_app/ScanScreens/ScanPageTea.dart';
 import 'package:plant_app/Screens/SideMenu.dart';
+import 'package:plant_app/Widgets/BackgroundImg.dart';
+import 'package:plant_app/ScanScreens/ScanPageSugarCane.dart';
 import '../ScanScreens/ScanPageTomato.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -34,7 +36,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          _buildBackgroundImage(),
+          BackgroundImg(),
           _buildBlurOverlay(),
           // _buildTitle(),
           Align(
@@ -49,43 +51,11 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBackgroundImage() {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('Images/back.jpg'), // Background image
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-        child: Container(
-          color: Colors.black.withOpacity(0.1),
-        ),
-      ),
-    );
-  }
-
   Widget _buildBlurOverlay() {
     return Container(
       color: Colors.black.withOpacity(0.5),
     );
   }
-
-  // Widget _buildTitle() {
-  //   return Align(
-  //     alignment: Alignment.topCenter,
-  //     child: Container(
-  //       width: 150,
-  //       height: 150,
-  //       decoration: BoxDecoration(
-  //         image: DecorationImage(
-  //           image: AssetImage('Images/logoWhite.png'), // Background image
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
 
   Widget _buildMenuSection(BuildContext context) {
     return Container(
@@ -144,7 +114,7 @@ class HomeScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => ImagePickerPageGrapes()),
                   );
                 }, 'Grapes', 'Description'),
-                _buildMenuIcon('assets/icon4.png', () {
+                _buildMenuIcon('Images/Plants/tea.png', () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ImagePickerPageTea()),
@@ -156,6 +126,12 @@ class HomeScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => ImagePickerPageCones()),
                   );
                 }, 'Corn', 'Description'),
+                _buildMenuIcon('Images/Plants/sugarcane.png', () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ImagePickerPageSugarCane()),
+                  );
+                }, 'Sugarcane', 'Description'),
               ],
             ),
           ),
