@@ -6,6 +6,9 @@ import 'package:plant_app/ScanScreens/ScanPageCones.dart';
 import 'package:plant_app/ScanScreens/ScanPageGrapes.dart';
 import 'package:plant_app/ScanScreens/ScanPagePotato.dart';
 import 'package:plant_app/ScanScreens/ScanPageTea.dart';
+import 'package:plant_app/Screens/SideMenu.dart';
+import 'package:plant_app/Widgets/BackgroundImg.dart';
+import 'package:plant_app/ScanScreens/ScanPageSugarCane.dart';
 import '../ScanScreens/ScanPageTomato.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,11 +16,30 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: Text(''),
+        backgroundColor: Colors.transparent, // Transparent app bar background
+        elevation: 0, // No shadow
+        centerTitle: true, // Center the logo
+        flexibleSpace: Container(
+          padding: EdgeInsets.only(top: 10),
+          child: Center(
+            child: Image.asset(
+              'Images/logoWhite.png',
+              height: 100,
+
+              // width: 100,
+            ),
+          ),
+        ),//  Add a back button icon
+      ),
       body: Stack(
         children: [
-          _buildBackgroundImage(),
+          BackgroundImg(),
           _buildBlurOverlay(),
-          _buildTitle(),
+          // _buildTitle(),
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
@@ -30,29 +52,13 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBackgroundImage() {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('Images/back.jpg'), // Background image
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-        child: Container(
-          color: Colors.black.withOpacity(0.1),
-        ),
-      ),
-    );
-  }
-
   Widget _buildBlurOverlay() {
     return Container(
       color: Colors.black.withOpacity(0.5),
     );
   }
 
+<<<<<<< HEAD
   Future<void> _fetchHelloWorld() async {
     final response = await http.get(Uri.parse('http://127.0.0.1:8000/ping'));
 
@@ -80,6 +86,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+=======
+>>>>>>> main
   Widget _buildMenuSection(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -137,7 +145,7 @@ class HomeScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => ImagePickerPageGrapes()),
                   );
                 }, 'Grapes', 'Description'),
-                _buildMenuIcon('assets/icon4.png', () {
+                _buildMenuIcon('Images/Plants/tea.png', () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ImagePickerPageTea()),
@@ -149,6 +157,12 @@ class HomeScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => ImagePickerPageCones()),
                   );
                 }, 'Corn', 'Description'),
+                _buildMenuIcon('Images/Plants/sugarcane.png', () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ImagePickerPageSugarCane()),
+                  );
+                }, 'Sugarcane', 'Description'),
               ],
             ),
           ),

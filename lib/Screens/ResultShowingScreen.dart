@@ -2,7 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:plant_app/Colors.dart';
-
+import 'package:plant_app/Widgets/BackgroundImg.dart';
+import 'package:plant_app/Widgets/BackgroundImgOverlay.dart';
 
 class ResultShowing extends StatelessWidget {
   final double confidence;
@@ -15,14 +16,19 @@ class ResultShowing extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(''), // Empty title to remove the default app bar text
-        backgroundColor: Colors.transparent, // Transparent app bar background
-        elevation: 0, // No shadow
-        centerTitle: true, // Center the logo
+        title: Text(''),
+        // Empty title to remove the default app bar text
+        backgroundColor: Colors.transparent,
+        // Transparent app bar background
+        elevation: 0,
+        // No shadow
+        centerTitle: true,
+        // Center the logo
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context); // This will navigate back to the previous screen
+            Navigator.pop(
+                context); // This will navigate back to the previous screen
           },
         ),
         flexibleSpace: Container(
@@ -33,12 +39,12 @@ class ResultShowing extends StatelessWidget {
               height: 100,
             ),
           ),
-        ),//  Add a back button icon
+        ), //  Add a back button icon
       ),
       body: Stack(
         children: [
-          _buildBackgroundImage(),
-          _buildBlurOverlay(),
+          BackgroundImg(),
+          BackgoundImgOverlay(),
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
@@ -51,6 +57,7 @@ class ResultShowing extends StatelessWidget {
     );
   }
 
+<<<<<<< HEAD
   Widget _buildBackgroundImage() {
     return Container(
       decoration: BoxDecoration(
@@ -74,6 +81,9 @@ class ResultShowing extends StatelessWidget {
     );
   }
   Widget _buildMenuSection(BuildContext context, double confidence,String disease,String solution) {
+=======
+  Widget _buildMenuSection(BuildContext context) {
+>>>>>>> main
     return Container(
       width: double.infinity,
       height: 450,
@@ -86,16 +96,13 @@ class ResultShowing extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
-            child:Padding(
+            child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               child: Container(
                 width: 60,
                 height: 6,
                 decoration: BoxDecoration(
-                  color: bgColor,
-                  borderRadius: BorderRadius.circular(3)
-
-                ),
+                    color: bgColor, borderRadius: BorderRadius.circular(3)),
               ),
             ),
           ),
@@ -123,7 +130,10 @@ class ResultShowing extends StatelessWidget {
           ),
           Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15,),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 15,
+              ),
               child: Container(
                 width: 300,
                 height: 60,
