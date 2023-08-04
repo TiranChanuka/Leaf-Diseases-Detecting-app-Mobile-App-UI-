@@ -118,7 +118,7 @@ class ResultShowing extends StatelessWidget {
                 height: 200,
                 child: SingleChildScrollView(
                   child: Text(
-                    'Solution :\nLorem ipsum dolor sit amet, consectetur adipiscinipsum dolor sit amet, consectetur adipiscing elit.rsus.ipsum dolor sit amet, consectetur adipiscing elit.rsus.g elit.rsus. Nunc vitae ligula ac ipsum semper nc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit anc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit anc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit asollicitudin. In sodales, sapien sit amet egestas luctus\n',
+                    '\n$solution\n',
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,

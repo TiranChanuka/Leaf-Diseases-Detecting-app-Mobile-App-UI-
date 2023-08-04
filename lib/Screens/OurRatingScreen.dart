@@ -32,7 +32,6 @@ class _OurRatingState extends State<OurRating> {
       final dio = Dio();
       final response = await dio.get(url);
       if (response.statusCode == 200) {
-        print(response);
         final feedbackData = response.data as List<dynamic>;
         setState(() {
           userFeedbackList = feedbackData.map((feedback) {
