@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plant_app/Colors.dart';
 import 'package:plant_app/Screens/AboutUs.dart';
 import 'package:plant_app/Screens/Feedback.dart';
+import 'package:plant_app/Screens/OurRatingScreen.dart';
 
 class NavBar extends StatelessWidget {
   @override
@@ -86,6 +87,12 @@ class NavBar extends StatelessWidget {
             title: Text(
               'Our Rating',
             ),
+            onTap: ()=>{
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => OurRating()),
+              ),
+            },
           ),
           Divider(
             thickness: 2,
@@ -115,7 +122,9 @@ class NavBar extends StatelessWidget {
               color: bgColor,
               size: 26,
             ),
-            onTap: () => null,
+            onTap: () => {
+            Navigator.pop(context),
+            },
           ),
         ],
       ),

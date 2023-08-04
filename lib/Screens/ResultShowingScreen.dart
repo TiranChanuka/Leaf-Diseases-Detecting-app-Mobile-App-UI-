@@ -17,13 +17,9 @@ class ResultShowing extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(''),
-        // Empty title to remove the default app bar text
         backgroundColor: Colors.transparent,
-        // Transparent app bar background
         elevation: 0,
-        // No shadow
         centerTitle: true,
-        // Center the logo
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -90,6 +86,7 @@ class ResultShowing extends StatelessWidget {
         border: Border.all(color: Colors.white),
         borderRadius: BorderRadius.circular(15),
       ),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -115,17 +112,23 @@ class ResultShowing extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              '$solution\n',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
+           Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: SizedBox(
+                height: 200,
+                child: SingleChildScrollView(
+                  child: Text(
+                    'Solution :\nLorem ipsum dolor sit amet, consectetur adipiscinipsum dolor sit amet, consectetur adipiscing elit.rsus.ipsum dolor sit amet, consectetur adipiscing elit.rsus.g elit.rsus. Nunc vitae ligula ac ipsum semper nc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit anc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit anc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit asollicitudin. In sodales, sapien sit amet egestas luctus\n',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
+
           Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(

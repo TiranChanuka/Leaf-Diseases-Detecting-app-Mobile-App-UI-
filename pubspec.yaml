@@ -76,6 +76,7 @@ flutter:
      - Images/Plants/sugarcane.png
      - Images/Plants/corn.png
      - Images/logoWhite.png
+     - Images/user.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
