@@ -15,14 +15,34 @@ class NavBar extends StatelessWidget {
           UserAccountsDrawerHeader(
             accountName: Text(
               'AGRIO',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
             ),
             accountEmail: Text(''),
             decoration: BoxDecoration(
               image: DecorationImage(
-                  fit: BoxFit.fill, image: AssetImage('Images/back.jpg')),
+                  fit: BoxFit.fill, image: AssetImage('Images/SImg.png')),
             ),
           ),
+          // ListTile(
+          //   leading: Icon(
+          //     Icons.cloudy_snowing,
+          //     color: bgColor,
+          //     size: 26,
+          //   ),
+          //   title: Text('Weather & Others'),
+          //   onTap: () => {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => AboutUs()),
+          //     ),
+          //   },
+          // ),
+          // Divider(
+          //   thickness: 2,
+          //   height: 5,
+          //   indent: 30,
+          //   endIndent: 30,
+          // ),
           ListTile(
             leading: Icon(
               Icons.favorite,
