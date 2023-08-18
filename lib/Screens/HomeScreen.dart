@@ -114,7 +114,7 @@ class HomeScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit.rsus. Nunc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit amet egestas luctus\nfelis nisl interdum ex, at rhoncus velit ligula ac velit. Vivamus eget fermentum ex.\n',
+              'Hey, welcome to Agrio! We are glad you are contacting us. For best results see a close-up view of the individual leaf. If you have any questions, please contact our friendly team who will be happy to assist you...!\n',
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.white,
