@@ -27,7 +27,8 @@ class _OurRatingState extends State<OurRating> {
   }
 
   Future<void> fetchFeedbackData() async {
-    final url = 'http://10.0.2.2:8000/feedbacks'; // Replace with your backend URL
+    // final url = 'http://10.0.2.2:8000/feedbacks';
+    final url = 'https://plant-uucd.onrender.com/feedbacks';
     try {
       final dio = Dio();
       final response = await dio.get(url);

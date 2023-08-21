@@ -26,7 +26,8 @@ class _FeedbackPageState extends State<FeedbackPage> {
     }
     String stars = convertToStars(_rating);
 
-    final url = 'http://10.0.2.2:8000/feedback';
+    // final url = 'http://10.0.2.2:8000/feedback';
+    final url = 'https://plant-uucd.onrender.com/feedback';
     print(_rating);
     print(_name);
     print(_feedbackText);
