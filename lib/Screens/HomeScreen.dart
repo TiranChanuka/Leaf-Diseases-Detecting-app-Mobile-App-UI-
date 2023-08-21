@@ -10,6 +10,7 @@ import 'package:plant_app/Screens/SideMenu.dart';
 import 'package:plant_app/Widgets/BackgroundImg.dart';
 import 'package:plant_app/ScanScreens/ScanPageSugarCane.dart';
 import '../ScanScreens/ScanPageTomato.dart';
+import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -57,6 +58,35 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+
+  Future<void> _fetchHelloWorld() async {
+    final response = await http.get(Uri.parse('http://127.0.0.1:8000/ping'));
+
+    if (response.statusCode == 200) {
+      final responseData = response.body;
+      print(responseData);
+      // You can parse the JSON response if needed, but for this example, we're printing the entire response.
+    } else {
+      print('Failed to fetch "Hello, World!"');
+    }
+  }
+
+  Widget _buildTitle() {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Container(
+        width: 150,
+        height: 150,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('Images/logoWhite.png'), // Background image
+          ),
+        ),
+      ),
+    );
+  }
+
+
   Widget _buildMenuSection(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -84,7 +114,7 @@ class HomeScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit.rsus. Nunc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit amet egestas luctus\nfelis nisl interdum ex, at rhoncus velit ligula ac velit. Vivamus eget fermentum ex.\n',
+              'Hey, welcome to Agrio! We are glad you are contacting us. For best results see a close-up view of the individual leaf. If you have any questions, please contact our friendly team who will be happy to assist you...!\n',
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.white,

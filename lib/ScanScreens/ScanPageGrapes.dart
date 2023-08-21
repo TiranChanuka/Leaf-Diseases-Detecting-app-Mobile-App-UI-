@@ -1,8 +1,11 @@
 import 'dart:io';
 import 'dart:ui';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:plant_app/Colors.dart';
+
+import '../Screens/ResultShowingScreen.dart';
 
 class ImagePickerPageGrapes extends StatefulWidget {
   @override
@@ -18,6 +21,7 @@ class _ImagePickerPageState extends State<ImagePickerPageGrapes> {
       setState(() {
         _image = File(image.path);
       });
+      await _uploadImage();
     }
   }
 
@@ -27,9 +31,46 @@ class _ImagePickerPageState extends State<ImagePickerPageGrapes> {
       setState(() {
         _image = File(image.path);
       });
+      await _uploadImage();
     }
   }
 
+  Future<void> _uploadImage() async {
+    if (_image == null) {
+      return; // No image to upload
+    }
+
+    // final url = 'http://10.0.2.2:8000/predict';
+    final url = 'https://grape-916q.onrender.com/predict';
+
+    try {
+      final dio = Dio();
+      final formData = FormData.fromMap({
+        'plant':'Grape',
+        'file': await MultipartFile.fromFile(_image!.path),
+      });
+      final response = await dio.post(url,data: formData);
+      if (response.statusCode == 200) {
+        final result = response.data;
+        // Handle the response from the backend as needed
+        print(result);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultShowing(
+                result['confidence'],
+                result['disease'],
+                result['solution']
+            ),
+          ),
+        );
+      } else {
+        print('Failed to upload image: ${response.statusMessage}');
+      }
+    } catch (e) {
+      print('Error occurred: $e');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

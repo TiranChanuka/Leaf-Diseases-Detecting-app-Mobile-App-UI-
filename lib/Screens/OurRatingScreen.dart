@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:plant_app/Colors.dart';
 import 'package:plant_app/Widgets/BackgroundImg.dart';
@@ -5,24 +6,50 @@ import 'package:plant_app/Widgets/BackgroundImgOverlay.dart';
 
 class UserFeedback {
   final String name;
-  final double rating;
+  final String rating;
   final String feedback;
 
   UserFeedback({required this.name, required this.rating, required this.feedback});
 }
 
-class OurRating extends StatelessWidget {
-  final List<UserFeedback> userFeedbackList = [
-    UserFeedback(name: 'John Doe', rating: 4.5, feedback: 'Great app! Very user-friendly.'),
-    UserFeedback(name: 'John Doe', rating: 4.5, feedback: 'Great app! Very user-friendly.'),
-    UserFeedback(name: 'John Doe', rating: 4.5, feedback: 'Great app! Very user-friendly.'),
-    UserFeedback(name: 'John Doe', rating: 4.5, feedback: 'Great app! Very user-friendly.'),
-    UserFeedback(name: 'John Doe', rating: 4.5, feedback: 'Great app! Very user-friendly.'),
-    UserFeedback(name: 'John Doe', rating: 4.5, feedback: 'Great app! Very user-friendly.'),
+class OurRating extends StatefulWidget {
+  @override
+  _OurRatingState createState() => _OurRatingState();
+}
 
-    UserFeedback(name: 'Jane Smith', rating: 5, feedback: 'Awesome experience. Highly recommended!'),
-    // Add more user feedback data here
-  ];
+class _OurRatingState extends State<OurRating> {
+  List<UserFeedback> userFeedbackList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchFeedbackData();
+  }
+
+  Future<void> fetchFeedbackData() async {
+    // final url = 'http://10.0.2.2:8000/feedbacks';
+    final url = 'https://plant-uucd.onrender.com/feedbacks';
+    try {
+      final dio = Dio();
+      final response = await dio.get(url);
+      if (response.statusCode == 200) {
+        final feedbackData = response.data as List<dynamic>;
+        setState(() {
+          userFeedbackList = feedbackData.map((feedback) {
+            return UserFeedback(
+              name: feedback['name'],
+              rating: feedback['rating'],
+              feedback: feedback['feedback'],
+            );
+          }).toList();
+        });
+      } else {
+        print('Failed to fetch feedback data: ${response.statusMessage}');
+      }
+    } catch (e) {
+      print('Error occurred while fetching feedback data: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

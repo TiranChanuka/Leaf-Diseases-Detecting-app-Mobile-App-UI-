@@ -6,6 +6,11 @@ import 'package:plant_app/Widgets/BackgroundImg.dart';
 import 'package:plant_app/Widgets/BackgroundImgOverlay.dart';
 
 class ResultShowing extends StatelessWidget {
+  final double confidence;
+  final String disease;
+  final String solution;
+
+  ResultShowing(this.confidence, this.disease, this.solution);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +45,7 @@ class ResultShowing extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: _buildMenuSection(context),
+              child: _buildMenuSection(context,confidence,disease,solution),
             ),
           ),
         ],
@@ -48,7 +53,31 @@ class ResultShowing extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuSection(BuildContext context) {
+
+  Widget _buildBackgroundImage() {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('Images/back.jpg'), // Background image
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+        child: Container(
+          color: Colors.black.withOpacity(0.1),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBlurOverlay() {
+    return Container(
+      color: Colors.black.withOpacity(0.5),
+    );
+  }
+  Widget _buildMenuSection(BuildContext context, double confidence,String disease,String solution) {
+
     return Container(
       width: double.infinity,
       height: 450,
@@ -75,7 +104,7 @@ class ResultShowing extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
-              '\nBrown Leaf\n',
+              '\n$disease',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -89,7 +118,7 @@ class ResultShowing extends StatelessWidget {
                 height: 200,
                 child: SingleChildScrollView(
                   child: Text(
-                    'Solution :\nLorem ipsum dolor sit amet, consectetur adipiscinipsum dolor sit amet, consectetur adipiscing elit.rsus.ipsum dolor sit amet, consectetur adipiscing elit.rsus.g elit.rsus. Nunc vitae ligula ac ipsum semper nc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit anc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit anc vitae ligula ac ipsum semper sollicitudin. In sodales, sapien sit asollicitudin. In sodales, sapien sit amet egestas luctus\n',
+                    '\n$solution\n',
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,
@@ -115,7 +144,7 @@ class ResultShowing extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    '99.9 Accurate'.toUpperCase(),
+                    'Accuracy $confidence %'.toUpperCase(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,

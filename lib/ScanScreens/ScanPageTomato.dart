@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:ui';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:plant_app/Colors.dart';
@@ -19,6 +20,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
       setState(() {
         _image = File(image.path);
       });
+      await _uploadImage();
     }
   }
 
@@ -28,6 +30,45 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
       setState(() {
         _image = File(image.path);
       });
+      await _uploadImage();
+    }
+  }
+
+  Future<void> _uploadImage() async {
+    if (_image == null) {
+      return; // No image to upload
+    }
+
+    // final url = 'http://10.0.2.2:8000/predict';
+    final url = 'https://plant-uucd.onrender.com/predict';
+
+    try {
+      final dio = Dio();
+      final formData = FormData.fromMap({
+        'plant':'Tomato',
+        'file': await MultipartFile.fromFile(_image!.path),
+      });
+      final response = await dio.post(url,data: formData);
+      if (response.statusCode == 200) {
+        final result = response.data;
+        // Handle the response from the backend as needed
+        print(result);
+        // Navigate to ResultPage with the result
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultShowing(
+              result['confidence'],
+              result['disease'],
+              result['solution']
+            ),
+          ),
+        );
+      } else {
+        print('Failed to upload image: ${response.statusMessage}');
+      }
+    } catch (e) {
+      print('Error occurred: $e');
     }
   }
 
@@ -127,43 +168,6 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                           children: [
                             Text(
                               'Pick Image from Gallery',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(Icons.upload_file_sharp),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  //**************************just for testing result page **************************
-                  SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ResultShowing(),
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: bgColor,
-                      minimumSize: Size(240, 80),
-                      padding: EdgeInsets.symmetric(vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    child: Expanded(
-                      child: Container(
-                        width: 300,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Result Show',
                               style: TextStyle(fontSize: 18),
                             ),
                             SizedBox(width: 5),
