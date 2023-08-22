@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
 import './HomeScreen.dart';
 
-class PlantLandingPage extends StatelessWidget {
+class PlantLandingPage extends StatefulWidget {
+  @override
+  _PlantLandingPageState createState() => _PlantLandingPageState();
+}
+
+class _PlantLandingPageState extends State<PlantLandingPage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 4), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        // Navigate to HomeScreen when tapped
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => HomeScreen()),
@@ -26,7 +43,6 @@ class PlantLandingPage extends StatelessWidget {
                       height: 200,
                     ),
                     SizedBox(height: 16),
-
                   ],
                 ),
               ),
