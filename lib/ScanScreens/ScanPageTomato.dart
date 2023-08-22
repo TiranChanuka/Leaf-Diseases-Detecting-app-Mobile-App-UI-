@@ -39,7 +39,6 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
       return; // No image to upload
     }
 
-    // final url = 'http://10.0.2.2:8000/predict';
     final url = 'https://plant-uucd.onrender.com/predict';
 
     try {
@@ -58,9 +57,9 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
           context,
           MaterialPageRoute(
             builder: (context) => ResultShowing(
-              result['confidence'],
-              result['disease'],
-              result['solution']
+                result['confidence'],
+                result['disease'],
+                result['solution']
             ),
           ),
         );
@@ -78,13 +77,13 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(''),
-        backgroundColor: Colors.transparent, // Transparent app bar background
-        elevation: 0, // No shadow
-        centerTitle: true, // Center the logo
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context); // This will navigate back to the previous screen
+            Navigator.pop(context);
           },
         ),
         flexibleSpace: Container(
@@ -93,11 +92,9 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
             child: Image.asset(
               'Images/logoWhite.png',
               height: 100,
-
-              // width: 100,
             ),
           ),
-        ),//  Add a back button icon
+        ),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -116,64 +113,55 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                 children: [
                   Text(
                     'Tomato Leaf Identifier 🍅🍃🍂\n\n',
-                    style: TextStyle(fontSize: 24, color: Colors.white,fontWeight:  FontWeight.bold,),
-
+                    style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
                   ),
-
                   SizedBox(height: 20),
-
                   ElevatedButton(
                     onPressed: _takePicture,
                     style: ElevatedButton.styleFrom(
                       primary: bgColor,
                       minimumSize: Size(200, 80),
-                      padding: EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: Expanded(
-                      child: Container(
-                        width: 200,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Take Picture',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(Icons.camera_alt),
-                          ],
-                        ),
+                    child: Container(
+                      width: 200,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Take Picture',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(width: 5),
+                          Icon(Icons.camera_alt),
+                        ],
                       ),
                     ),
                   ),
-                  SizedBox(height: 10), // Add some space between the buttons
+                  SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: _pickImage,
                     style: ElevatedButton.styleFrom(
                       primary: bgColor,
                       minimumSize: Size(240, 80),
-                      padding: EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: Expanded(
-                      child: Container(
-                        width: 300,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Pick Image from Gallery',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(Icons.upload_file_sharp),
-                          ],
-                        ),
+                    child: Container(
+                      width: 240,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Pick Image from Gallery',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(width: 5),
+                          Icon(Icons.upload_file_sharp),
+                        ],
                       ),
                     ),
                   ),
@@ -183,11 +171,9 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
           ),
         ),
       ),
-
     );
   }
 }
-
 
 void main() {
   runApp(MaterialApp(

@@ -40,7 +40,6 @@ class _ImagePickerPageState extends State<ImagePickerPageGrapes> {
       return; // No image to upload
     }
 
-    // final url = 'http://10.0.2.2:8000/predict';
     final url = 'https://grape-916q.onrender.com/predict';
 
     try {
@@ -71,6 +70,7 @@ class _ImagePickerPageState extends State<ImagePickerPageGrapes> {
       print('Error occurred: $e');
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,35 +113,30 @@ class _ImagePickerPageState extends State<ImagePickerPageGrapes> {
                 children: [
                   Text(
                     'Grapes Leaf Identifier 🍇🍃🍂\n\n',
-                    style: TextStyle(fontSize: 24, color: Colors.white,fontWeight:  FontWeight.bold,),
-
+                    style: TextStyle(fontSize: 24, color: Colors.white,fontWeight: FontWeight.bold,),
                   ),
-
                   SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: _takePicture,
                     style: ElevatedButton.styleFrom(
                       primary: bgColor,
                       minimumSize: Size(200, 80),
-                      padding: EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: Expanded(
-                      child: Container(
-                        width: 200,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Take Picture',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(Icons.camera_alt),
-                          ],
-                        ),
+                    child: Container(
+                      width: 200,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Take Picture',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(width: 5),
+                          Icon(Icons.camera_alt),
+                        ],
                       ),
                     ),
                   ),
@@ -151,25 +146,22 @@ class _ImagePickerPageState extends State<ImagePickerPageGrapes> {
                     style: ElevatedButton.styleFrom(
                       primary: bgColor,
                       minimumSize: Size(240, 80),
-                      padding: EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: Expanded(
-                      child: Container(
-                        width: 300,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Pick Image from Gallery',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(Icons.upload_file_sharp),
-                          ],
-                        ),
+                    child: Container(
+                      width: 240,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Pick Image from Gallery',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(width: 5),
+                          Icon(Icons.upload_file_sharp),
+                        ],
                       ),
                     ),
                   ),
@@ -179,12 +171,9 @@ class _ImagePickerPageState extends State<ImagePickerPageGrapes> {
           ),
         ),
       ),
-
     );
   }
 }
-
-
 
 void main() {
   runApp(MaterialApp(
