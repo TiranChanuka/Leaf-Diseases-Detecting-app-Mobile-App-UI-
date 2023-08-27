@@ -19,6 +19,8 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
   Stream<ConnectivityResult> _connectivityStream =
   Stream<ConnectivityResult>.empty();
 
+  bool _loading = false; // Added loading variable
+
   @override
   void initState() {
     super.initState();
@@ -34,6 +36,10 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
   }
 
   Future<void> _takePicture() async {
+    setState(() {
+      _loading = true;
+    });
+
     final image = await ImagePicker().getImage(source: ImageSource.camera);
     if (image != null) {
       setState(() {
@@ -41,12 +47,20 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
       });
       await _uploadImage();
     }
+
+    setState(() {
+      _loading = false;
+    });
   }
 
   Future<void> _pickImage() async {
     if (!_isConnected) {
       return; // Not connected to the internet, so don't proceed
     }
+
+    setState(() {
+      _loading = true;
+    });
 
     final image = await ImagePicker().getImage(source: ImageSource.gallery);
     if (image != null) {
@@ -55,6 +69,10 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
       });
       await _uploadImage();
     }
+
+    setState(() {
+      _loading = false;
+    });
   }
 
   Future<void> _uploadImage() async {
@@ -98,10 +116,10 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(''), // Empty title to remove the default app bar text
-        backgroundColor: Colors.transparent, // Transparent app bar background
-        elevation: 0, // No shadow
-        centerTitle: true, // Center the logo
+        title: Text(''),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -116,7 +134,7 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
               height: 100,
             ),
           ),
-        ), //  Add a back button icon
+        ),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -151,7 +169,9 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: Container(
+                    child: _loading
+                        ? CircularProgressIndicator() // Display loading indicator
+                        : Container(
                       width: 200,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -179,7 +199,9 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        child: Container(
+                        child: _loading
+                            ? CircularProgressIndicator() // Display loading indicator
+                            : Container(
                           width: 240,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

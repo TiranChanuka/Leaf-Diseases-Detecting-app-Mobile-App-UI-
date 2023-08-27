@@ -17,7 +17,9 @@ class _ImagePickerPageState extends State<ImagePickerPageCones> {
   File? _image;
   bool _isConnected = true;
   Stream<ConnectivityResult> _connectivityStream =
-      Stream<ConnectivityResult>.empty();
+  Stream<ConnectivityResult>.empty();
+
+  bool _loading = false; // Added loading variable
 
   @override
   void initState() {
@@ -34,6 +36,10 @@ class _ImagePickerPageState extends State<ImagePickerPageCones> {
   }
 
   Future<void> _takePicture() async {
+    setState(() {
+      _loading = true;
+    });
+
     final image = await ImagePicker().getImage(source: ImageSource.camera);
     if (image != null) {
       setState(() {
@@ -41,12 +47,20 @@ class _ImagePickerPageState extends State<ImagePickerPageCones> {
       });
       await _uploadImage();
     }
+
+    setState(() {
+      _loading = false;
+    });
   }
 
   Future<void> _pickImage() async {
     if (!_isConnected) {
       return; // Not connected to the internet, so don't proceed
     }
+
+    setState(() {
+      _loading = true;
+    });
 
     final image = await ImagePicker().getImage(source: ImageSource.gallery);
     if (image != null) {
@@ -55,6 +69,10 @@ class _ImagePickerPageState extends State<ImagePickerPageCones> {
       });
       await _uploadImage();
     }
+
+    setState(() {
+      _loading = false;
+    });
   }
 
   Future<void> _uploadImage() async {
@@ -148,7 +166,9 @@ class _ImagePickerPageState extends State<ImagePickerPageCones> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: Container(
+                    child: _loading
+                        ? CircularProgressIndicator() // Display loading indicator
+                        : Container(
                       width: 200,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -176,7 +196,9 @@ class _ImagePickerPageState extends State<ImagePickerPageCones> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        child: Container(
+                        child: _loading
+                            ? CircularProgressIndicator() // Display loading indicator
+                            : Container(
                           width: 240,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

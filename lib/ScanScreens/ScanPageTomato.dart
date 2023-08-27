@@ -18,6 +18,8 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
   Stream<ConnectivityResult> _connectivityStream =
   Stream<ConnectivityResult>.empty();
 
+  bool _loading = false; // Added loading variable
+
   @override
   void initState() {
     super.initState();
@@ -32,8 +34,11 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
     });
   }
 
-
   Future<void> _takePicture() async {
+    setState(() {
+      _loading = true;
+    });
+
     final image = await ImagePicker().getImage(source: ImageSource.camera);
     if (image != null) {
       setState(() {
@@ -41,9 +46,17 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
       });
       await _uploadImage();
     }
+
+    setState(() {
+      _loading = false;
+    });
   }
 
   Future<void> _pickImage() async {
+    setState(() {
+      _loading = true;
+    });
+
     final image = await ImagePicker().getImage(source: ImageSource.gallery);
     if (image != null) {
       setState(() {
@@ -51,10 +64,21 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
       });
       await _uploadImage();
     }
+
+    setState(() {
+      _loading = false;
+    });
   }
 
   Future<void> _uploadImage() async {
+    setState(() {
+      _loading = true;
+    });
+
     if (_image == null) {
+      setState(() {
+        _loading = false;
+      });
       return; // No image to upload
     }
 
@@ -63,10 +87,10 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
     try {
       final dio = Dio();
       final formData = FormData.fromMap({
-        'plant':'Tomato',
+        'plant': 'Tomato',
         'file': await MultipartFile.fromFile(_image!.path),
       });
-      final response = await dio.post(url,data: formData);
+      final response = await dio.post(url, data: formData);
       if (response.statusCode == 200) {
         final result = response.data;
         // Handle the response from the backend as needed
@@ -76,10 +100,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
           context,
           MaterialPageRoute(
             builder: (context) => ResultShowing(
-                result['confidence'],
-                result['disease'],
-                result['solution']
-            ),
+                result['confidence'], result['disease'], result['solution']),
           ),
         );
       } else {
@@ -88,6 +109,10 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
     } catch (e) {
       print('Error occurred: $e');
     }
+
+    setState(() {
+      _loading = false;
+    });
   }
 
   @override
@@ -95,10 +120,10 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(''), // Empty title to remove the default app bar text
-        backgroundColor: Colors.transparent, // Transparent app bar background
-        elevation: 0, // No shadow
-        centerTitle: true, // Center the logo
+        title: Text(''),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -113,7 +138,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
               height: 100,
             ),
           ),
-        ), //  Add a back button icon
+        ),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -148,7 +173,9 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    child: Container(
+                    child: _loading
+                        ? CircularProgressIndicator() // Display loading indicator
+                        : Container(
                       width: 200,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -176,7 +203,9 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        child: Container(
+                        child: _loading
+                            ? CircularProgressIndicator() // Display loading indicator
+                            : Container(
                           width: 240,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
