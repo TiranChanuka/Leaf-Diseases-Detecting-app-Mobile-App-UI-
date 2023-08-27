@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:ui';
+import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,6 +14,24 @@ class ImagePickerPageTomato extends StatefulWidget {
 
 class _ImagePickerPageState extends State<ImagePickerPageTomato> {
   File? _image;
+  bool _isConnected = true;
+  Stream<ConnectivityResult> _connectivityStream =
+  Stream<ConnectivityResult>.empty();
+
+  @override
+  void initState() {
+    super.initState();
+    _connectivityStream = Connectivity().onConnectivityChanged;
+    _checkConnectivity();
+  }
+
+  Future<void> _checkConnectivity() async {
+    final result = await Connectivity().checkConnectivity();
+    setState(() {
+      _isConnected = result != ConnectivityResult.none;
+    });
+  }
+
 
   Future<void> _takePicture() async {
     final image = await ImagePicker().getImage(source: ImageSource.camera);
@@ -76,10 +95,10 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(''),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
+        title: Text(''), // Empty title to remove the default app bar text
+        backgroundColor: Colors.transparent, // Transparent app bar background
+        elevation: 0, // No shadow
+        centerTitle: true, // Center the logo
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -94,7 +113,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
               height: 100,
             ),
           ),
-        ),
+        ), //  Add a back button icon
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -113,11 +132,15 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                 children: [
                   Text(
                     'Tomato Leaf Identifier 🍅🍃🍂\n\n',
-                    style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: _takePicture,
+                    onPressed: _isConnected ? _takePicture : null,
                     style: ElevatedButton.styleFrom(
                       primary: bgColor,
                       minimumSize: Size(200, 80),
@@ -141,29 +164,73 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                     ),
                   ),
                   SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: _pickImage,
-                    style: ElevatedButton.styleFrom(
-                      primary: bgColor,
-                      minimumSize: Size(240, 80),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: _isConnected ? _pickImage : null,
+                        style: ElevatedButton.styleFrom(
+                          primary: bgColor,
+                          minimumSize: Size(240, 80),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        child: Container(
+                          width: 240,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Pick Image from Gallery',
+                                style: TextStyle(fontSize: 18),
+                              ),
+                              SizedBox(width: 5),
+                              Icon(Icons.upload_file_sharp),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                    child: Container(
-                      width: 240,
-                      child: Row(
+                      if (!_isConnected)
+                        Icon(
+                          Icons.wifi_off,
+                          size: 64,
+                          color: Colors.red,
+                        ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  StreamBuilder<ConnectivityResult>(
+                    stream: _connectivityStream,
+                    initialData: ConnectivityResult.none,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<ConnectivityResult> snapshot) {
+                      final isConnected =
+                          snapshot.data != ConnectivityResult.none;
+                      _isConnected = isConnected;
+
+                      return Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            'Pick Image from Gallery',
-                            style: TextStyle(fontSize: 18),
+                          Icon(
+                            isConnected ? Icons.wifi : Icons.wifi_off,
+                            color: isConnected ? Colors.green : Colors.red,
+                            size: 24,
                           ),
-                          SizedBox(width: 5),
-                          Icon(Icons.upload_file_sharp),
+                          SizedBox(width: 10),
+                          Text(
+                            isConnected
+                                ? 'Connected to the internet'
+                                : 'No internet connection',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: isConnected ? Colors.green : Colors.red,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ],
-                      ),
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),
