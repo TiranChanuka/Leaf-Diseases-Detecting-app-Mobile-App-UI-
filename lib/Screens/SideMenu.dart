@@ -77,21 +77,21 @@ class NavBar extends StatelessWidget {
               ),
             },
           ),
-          Divider(
-            thickness: 2,
-            height: 5,
-            indent: 30,
-            endIndent: 30,
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.share,
-              color: bgColor,
-              size: 26,
-            ),
-            title: Text('Share'),
-            onTap: () => null,
-          ),
+          // Divider(
+          //   thickness: 2,
+          //   height: 5,
+          //   indent: 30,
+          //   endIndent: 30,
+          // ),
+          // ListTile(
+          //   leading: Icon(
+          //     Icons.share,
+          //     color: bgColor,
+          //     size: 26,
+          //   ),
+          //   title: Text('Share'),
+          //   onTap: () => null,
+          // ),
           Divider(
             thickness: 2,
             height: 5,
@@ -114,21 +114,21 @@ class NavBar extends StatelessWidget {
               ),
             },
           ),
-          Divider(
-            thickness: 2,
-            height: 5,
-            indent: 30,
-            endIndent: 30,
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.settings,
-              color: bgColor,
-              size: 26,
-            ),
-            title: Text('Settings'),
-            onTap: () => null,
-          ),
+          // Divider(
+          //   thickness: 2,
+          //   height: 5,
+          //   indent: 30,
+          //   endIndent: 30,
+          // ),
+          // ListTile(
+          //   leading: Icon(
+          //     Icons.settings,
+          //     color: bgColor,
+          //     size: 26,
+          //   ),
+          //   title: Text('Settings'),
+          //   onTap: () => null,
+          // ),
           Divider(
             thickness: 2,
             height: 5,
