@@ -7,57 +7,338 @@ import 'package:plant_app/ScanScreens/ScanPageGrapes.dart';
 import 'package:plant_app/ScanScreens/ScanPagePotato.dart';
 import 'package:plant_app/ScanScreens/ScanPageTea.dart';
 import 'package:plant_app/Screens/SideMenu.dart';
-import 'package:plant_app/Widgets/BackgroundImg.dart';
 import 'package:plant_app/ScanScreens/ScanPageSugarCane.dart';
 import '../ScanScreens/ScanPageTomato.dart';
 import 'package:http/http.dart' as http;
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavBar(),
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         title: Text(''),
-        backgroundColor: Colors.transparent, // Transparent app bar background
+        backgroundColor: wColor,
         elevation: 0, // No shadow
-        centerTitle: true, // Center the logo
-        flexibleSpace: Container(
-          padding: EdgeInsets.only(top: 10),
-          child: Center(
-            child: Image.asset(
-              'Images/logoWhite.png',
-              height: 100,
-
-              // width: 100,
-            ),
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            icon: Icon(Icons.language, color: Colors.black), // Customize the language icon
+            onSelected: (value) {
+              // Handle language selection here
+              if (value == 'English') {
+                // Set the app's language to English
+              } else if (value == 'Sinhala') {
+                // Set the app's language to Spanish
+              }
+            },
+            itemBuilder: (BuildContext context) {
+              return <PopupMenuEntry<String>>[
+                PopupMenuItem<String>(
+                  value: 'english',
+                  child: Text('English'),
+                ),
+                PopupMenuItem<String>(
+                  value: 'sinhala',
+                  child: Text('Sinhala'),
+                ),
+                // Add more language options as needed
+              ];
+            },
           ),
-        ),//  Add a back button icon
+        ],
       ),
-      body: Stack(
+        body: ListView(
         children: [
-          BackgroundImg(),
-          _buildBlurOverlay(),
-          // _buildTitle(),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: _buildMenuSection(context),
-            ),
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Identify Crop',
+                    style:GoogleFonts.poppins(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w600,
+                    ) ,
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Diseases',
+                    style:GoogleFonts.poppins(
+                      fontSize: 28,
+                    ) ,
+                  ),
+                ],
+              ),
+              SizedBox(height: 30,),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.9, // Adjust the width as needed
+                child: Image.asset(
+                  'Images/hero.png',
+                  fit: BoxFit.contain, // Use BoxFit.contain to fit the image within the container
+                ),
+              ),
+              SizedBox(height: 25,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Select Plant',
+                    style:GoogleFonts.poppins(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: bgColor
+                    ) ,
+                  ),
+                ],
+              ),
+             SizedBox(height: 36,),
+             Row(
+               mainAxisAlignment: MainAxisAlignment.center,
+               children: [
+                 Container(
+                   width: MediaQuery.of(context).size.width * 0.455,
+                   child: GestureDetector(
+                     onTap: () {
+                       // Navigate to the new page when the Card is tapped
+                       Navigator.push(
+                         context,
+                         MaterialPageRoute(builder: (context) {
+                           return ImagePickerPageTomato();
+                         }),
+                       );
+                     },
+                     child: Card(
+                       elevation: 0,
+                       child: ClipRRect(
+                         borderRadius: BorderRadius.circular(22),
+                         child: Column(
+                           mainAxisSize: MainAxisSize.min,
+                           children: <Widget>[
+                             Container(
+                               color: Color(0xFFF4F4F4), // Background color
+                               padding: EdgeInsets.all(8),
+                               child: Image.asset(
+                                 'Images/PlantFront/tomatofront.png',
+                                 height: 160.0,
+                                 width: 160.0,
+                               ),
+                             ),
+                           ],
+                         ),
+                       ),
+                     ),
+                   ),
+                 ),
+
+                 SizedBox(width: 5,),
+                 Container(
+                   width: MediaQuery.of(context).size.width * 0.455,
+                   child: GestureDetector(
+                     onTap: () {
+                       // Navigate to the new page when the Card is tapped
+                       Navigator.push(
+                         context,
+                         MaterialPageRoute(builder: (context) {
+                           return ImagePickerPagePotato();
+                         }),
+                       );
+                     },
+                     child: Card(
+                       elevation: 0,
+                       child: ClipRRect(
+                         borderRadius: BorderRadius.circular(22),
+                         child: Column(
+                           mainAxisSize: MainAxisSize.min,
+                           children: <Widget>[
+                             Container(
+                               color: Color(0xFFF4F4F4), // Background color
+                               padding: EdgeInsets.all(8),
+                               child: Image.asset(
+                                 'Images/PlantFront/potatofront.png',
+                                 height: 160.0,
+                                 width: 160.0,
+                               ),
+                             ),
+                           ],
+                         ),
+                       ),
+                     ),
+                   ),
+                 ),
+               ],
+             ),
+              SizedBox(height: 5,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.455,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Navigate to the new page when the Card is tapped
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return ImagePickerPageGrapes();
+                          }),
+                        );
+                      },
+                      child: Card(
+                        elevation: 0,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(22),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Container(
+                                color: Color(0xFFF4F4F4), // Background color
+                                padding: EdgeInsets.all(8),
+                                child: Image.asset(
+                                  'Images/PlantFront/grapesfront.png',
+                                  height: 160.0,
+                                  width: 160.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 5,),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.455,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Navigate to the new page when the Card is tapped
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return ImagePickerPageTea();
+                          }),
+                        );
+                      },
+                      child: Card(
+                        elevation: 0,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(22),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Container(
+                                color: Color(0xFFF4F4F4), // Background color
+                                padding: EdgeInsets.all(8),
+                                child: Image.asset(
+                                  'Images/PlantFront/teafront.png',
+                                  height: 160.0,
+                                  width: 160.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+              SizedBox(height: 5,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.455,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Navigate to the new page when the Card is tapped
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return ImagePickerPageCones();
+                          }),
+                        );
+                      },
+                      child: Card(
+                        elevation: 0,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(22),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Container(
+                                color: Color(0xFFF4F4F4), // Background color
+                                padding: EdgeInsets.all(8),
+                                child: Image.asset(
+                                  'Images/PlantFront/cornfront.png',
+                                  height: 160.0,
+                                  width: 160.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 5,),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.455,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Navigate to the new page when the Card is tapped
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return ImagePickerPageSugarCane();
+                          }),
+                        );
+                      },
+                      child: Card(
+                        elevation: 0,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(22),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Container(
+                                color: Color(0xFFF4F4F4), // Background color
+                                padding: EdgeInsets.all(8),
+                                child: Image.asset(
+                                  'Images/PlantFront/sugarcanefront.png',
+                                  height: 160.0,
+                                  width: 160.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+            ],
           ),
+          // Align(
+          //   alignment: Alignment.bottomCenter,
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(8.0),
+          //     child:
+          //   ),
+          // ),
         ],
       ),
     );
   }
-
-  Widget _buildBlurOverlay() {
-    return Container(
-      color: Colors.black.withOpacity(0.5),
-    );
-  }
-
 
   Future<void> _fetchHelloWorld() async {
     final response = await http.get(Uri.parse('http://127.0.0.1:8000/ping'));
@@ -70,136 +351,4 @@ class HomeScreen extends StatelessWidget {
       print('Failed to fetch "Hello, World!"');
     }
   }
-
-  Widget _buildTitle() {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        width: 150,
-        height: 150,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('Images/logoWhite.png'), // Background image
-          ),
-        ),
-      ),
-    );
-  }
-
-
-  Widget _buildMenuSection(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 450,
-      decoration: BoxDecoration(
-        color: fbColor.withOpacity(0.18),
-        border: Border.all(color: Colors.white, width: 0.8),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Column(
-
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              '\nMenu Section\n',
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              'Hey, welcome to Agrio! We are glad you are contacting us. For best results see a close-up view of the individual leaf. If you have any questions, please contact our friendly team who will be happy to assist you...!\n',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Expanded(
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.symmetric(horizontal: 5),
-              children: [
-                _buildMenuIcon('Images/Plants/tomato.png', () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ImagePickerPageTomato()),
-                  );
-                }, 'Tomato', 'Description'),
-                _buildMenuIcon('Images/Plants/potato.png', () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ImagePickerPagePotato()),
-                  );
-                }, 'Potato', 'Description'),
-                _buildMenuIcon('Images/Plants/grapes.png', () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ImagePickerPageGrapes()),
-                  );
-                }, 'Grapes', 'Description'),
-                _buildMenuIcon('Images/Plants/tea.png', () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ImagePickerPageTea()),
-                  );
-                }, 'Tea', 'Description'),
-                _buildMenuIcon('Images/Plants/corn.png', () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ImagePickerPageCones()),
-                  );
-                }, 'Corn', 'Description'),
-                _buildMenuIcon('Images/Plants/sugarcane.png', () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ImagePickerPageSugarCane()),
-                  );
-                }, 'Sugarcane', 'Description'),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildMenuIcon(String imagePath,
-      VoidCallback onTap,
-      String title,
-      String additionalText,) {
-    return GestureDetector(
-      onTap: onTap, // Use the provided onTap callback
-      child: Container(
-        margin: EdgeInsets.all(8),
-        width: 100,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.white, width: 1),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(imagePath),
-            SizedBox(height: 8),
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
 }
