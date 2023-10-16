@@ -70,11 +70,19 @@ flutter:
   assets:
      - Images/logo.png
      - Images/back.jpg
+     - Images/hero.png
+     - Images/PlantFront/tomatofront.png
+     - Images/PlantFront/potatofront.png
+     - Images/PlantFront/grapesfront.png
+     - Images/PlantFront/teafront.png
+     - Images/PlantFront/cornfront.png
+     - Images/PlantFront/sugarcanefront.png
      - Images/Plants/potato.png
      - Images/Plants/tomato.png
      - Images/Plants/tomatoNew.png
      - Images/Plants/pota.png
      - Images/Plants/grap.png
+     - Images/Plants/sugar.png
      - Images/Plants/grapes.png
      - Images/Plants/tea.png
      - Images/Plants/sugarcane.png
