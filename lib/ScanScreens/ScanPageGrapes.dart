@@ -47,10 +47,10 @@ class _ImagePickerPageState extends State<ImagePickerPageGrapes> {
     try {
       final dio = Dio();
       final formData = FormData.fromMap({
-        'plant':'Grape',
+        'plant': 'Grape',
         'file': await MultipartFile.fromFile(_image!.path),
       });
-      final response = await dio.post(url,data: formData);
+      final response = await dio.post(url, data: formData);
       if (response.statusCode == 200) {
         final result = response.data;
         // Handle the response from the backend as needed
@@ -59,10 +59,7 @@ class _ImagePickerPageState extends State<ImagePickerPageGrapes> {
           context,
           MaterialPageRoute(
             builder: (context) => ResultShowing(
-                result['confidence'],
-                result['disease'],
-                result['solution']
-            ),
+                result['confidence'], result['disease'], result['solution']),
           ),
         );
       } else {
@@ -264,16 +261,19 @@ class BannerCardGrapes extends StatelessWidget {
                   ],
                 ),
               ),
-              Image.asset(
-                'Images/Plants/grap.png', // Replace with your image asset path
-                width: 170, // Adjust the width as needed
-                height: 227, // Match the height of the card
-              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(30), // Set your desired border radius
+                child: Image.asset(
+                  'Images/Plants/grap.png', // Replace with your image asset path
+                  width: 165, // Adjust the width as needed
+                  height: 227, // Match the height of the card
+                ),
+              )
+
             ],
           ),
         ),
       ),
-
     );
   }
 }
