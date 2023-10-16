@@ -4,8 +4,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:plant_app/Colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../Screens/ResultShowingScreen.dart';
+import '../Widgets/ScanpageCenter.dart';
 
 class ImagePickerPageSugarCane extends StatefulWidget {
   @override
@@ -74,104 +76,133 @@ class _ImagePickerPageState extends State<ImagePickerPageSugarCane> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(''),
-        backgroundColor: Colors.transparent, // Transparent app bar background
-        elevation: 0, // No shadow
-        centerTitle: true, // Center the logo
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back_ios_new),
+          color: Colors.black,
           onPressed: () {
-            Navigator.pop(context); // This will navigate back to the previous screen
+            Navigator.pop(context);
           },
         ),
-        flexibleSpace: Container(
-          padding: EdgeInsets.only(top: 10),
-          child: Center(
-            child: Image.asset(
-              'Images/logoWhite.png',
-              height: 100,
-            ),
-          ),
-        ),//  Add a back button icon
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('Images/back.jpg'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-          child: Container(
-            color: Colors.black.withOpacity(0.4),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Sugarcane Leaf Identifier 🎋🍃🍂\n\n',
-                    style: TextStyle(fontSize: 24, color: Colors.white,fontWeight:  FontWeight.bold,),
-
+      body: ListView(
+        children: [
+          Column(
+            children: [
+              BannerCardSugarcane(),
+              ScanPageCenter(),
+              SizedBox(height: 47),
+              ElevatedButton(
+                onPressed: _takePicture,
+                style: ElevatedButton.styleFrom(
+                  primary: buttonColor,
+                  minimumSize: Size(344, 90),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
-
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: _takePicture,
-                    style: ElevatedButton.styleFrom(
-                      primary: bgColor,
-                      minimumSize: Size(200, 80),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  width: 335,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  'Take Picture',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(width: 5), // Add left margin
+                                Text(
+                                  'Of your plant',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    color: bgColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    child: Container(
-                      width: 200,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Take Picture',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          SizedBox(width: 5),
-                          Icon(Icons.camera_alt),
-                        ],
-                      ),
-                    ),
+                      Icon(Icons.camera_alt_outlined, size: 36),
+                    ],
                   ),
-                  SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: _pickImage,
-                    style: ElevatedButton.styleFrom(
-                      primary: bgColor,
-                      minimumSize: Size(240, 80),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    child: Container(
-                      width: 240,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Pick Image from Gallery',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          SizedBox(width: 5),
-                          Icon(Icons.upload_file_sharp),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
+              SizedBox(height: 18),
+              ElevatedButton(
+                onPressed: _pickImage,
+                style: ElevatedButton.styleFrom(
+                  primary: buttonColor,
+                  minimumSize: Size(344, 90),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: Container(
+                  width: 335,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  'Import',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(width: 1), // Add left margin
+                                Text(
+                                  'from your gallery',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    color: bgColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Icon(Icons.file_upload_outlined, size: 36),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 35),
+            ],
           ),
-        ),
+        ],
       ),
     );
   }
@@ -181,4 +212,71 @@ void main() {
   runApp(MaterialApp(
     home: ImagePickerPageSugarCane(),
   ));
+}
+
+class BannerCardSugarcane extends StatelessWidget {
+  const BannerCardSugarcane({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: Color(0xFFB3C074),
+        child: SizedBox(
+          width: 372,
+          height: 228,
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(width: 25), // Add left margin
+                        Text(
+                          'Sugarcane \nLeaf',
+                          style: GoogleFonts.poppins(
+                            fontSize: 27,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(width: 26), // Add left margin
+                        Text(
+                          'Identifier',
+                          style: GoogleFonts.poppins(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+             ClipRRect(
+               borderRadius: BorderRadius.circular(30),
+               child:  Image.asset(
+                 'Images/Plants/sugar.png',
+                 width: 183, // Adjust the width as needed
+                 height: 227, // Match the height of the card
+               ),
+             )
+            ],
+          ),
+        ),
+      ),
+
+    );
+  }
 }
