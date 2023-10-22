@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:plant_app/Colors.dart';
 import 'package:plant_app/Screens/AboutUs.dart';
 import 'package:plant_app/Screens/Feedback.dart';
@@ -14,42 +15,25 @@ class NavBar extends StatelessWidget {
         children: [
           UserAccountsDrawerHeader(
             accountName: Text(
-              'AGRIO',
+              '',
               style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
             ),
             accountEmail: Text(''),
             decoration: BoxDecoration(
               image: DecorationImage(
-                  fit: BoxFit.fill, image: AssetImage('Images/SImg.png')),
+                  fit: BoxFit.fill, image: AssetImage('Images/SImg.png'),),
             ),
           ),
-          // ListTile(
-          //   leading: Icon(
-          //     Icons.cloudy_snowing,
-          //     color: bgColor,
-          //     size: 26,
-          //   ),
-          //   title: Text('Weather & Others'),
-          //   onTap: () => {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => AboutUs()),
-          //     ),
-          //   },
-          // ),
-          // Divider(
-          //   thickness: 2,
-          //   height: 5,
-          //   indent: 30,
-          //   endIndent: 30,
-          // ),
           ListTile(
             leading: Icon(
-              Icons.favorite,
-              color: bgColor,
-              size: 26,
+              Icons.favorite_outline_rounded,
+              size: 22,
             ),
-            title: Text('About Us'),
+            title: Text('about',
+              style:GoogleFonts.poppins(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
+              ) ,),
             onTap: () => {
               Navigator.push(
                 context,
@@ -57,19 +41,16 @@ class NavBar extends StatelessWidget {
               ),
             },
           ),
-          Divider(
-            thickness: 2,
-            height: 5,
-            indent: 30,
-            endIndent: 30,
-          ),
           ListTile(
             leading: Icon(
-              Icons.person,
-              color: bgColor,
-              size: 26,
+              Icons.feedback_outlined,
+              size: 22,
             ),
-            title: Text('Feedback & Rate'),
+            title: Text('Feedback & Rate',
+              style:GoogleFonts.poppins(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
+              ) ,),
             onTap: () => {
               Navigator.push(
                 context,
@@ -77,36 +58,16 @@ class NavBar extends StatelessWidget {
               ),
             },
           ),
-          Divider(
-            thickness: 2,
-            height: 5,
-            indent: 30,
-            endIndent: 30,
-          ),
           ListTile(
             leading: Icon(
-              Icons.share,
-              color: bgColor,
-              size: 26,
+              Icons.star_border_outlined,
+              size: 22,
             ),
-            title: Text('Share'),
-            onTap: () => null,
-          ),
-          Divider(
-            thickness: 2,
-            height: 5,
-            indent: 30,
-            endIndent: 30,
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.star_rate,
-              color: bgColor,
-              size: 26,
-            ),
-            title: Text(
-              'Our Rating',
-            ),
+            title: Text('Share',
+              style:GoogleFonts.poppins(
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+              ) ,),
             onTap: ()=>{
               Navigator.push(
                 context,
@@ -114,33 +75,15 @@ class NavBar extends StatelessWidget {
               ),
             },
           ),
-          Divider(
-            thickness: 2,
-            height: 5,
-            indent: 30,
-            endIndent: 30,
-          ),
           ListTile(
+            title: Text('Exit',
+                style:GoogleFonts.poppins(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
+                )),
             leading: Icon(
-              Icons.settings,
-              color: bgColor,
-              size: 26,
-            ),
-            title: Text('Settings'),
-            onTap: () => null,
-          ),
-          Divider(
-            thickness: 2,
-            height: 5,
-            indent: 30,
-            endIndent: 30,
-          ),
-          ListTile(
-            title: Text('Exit'),
-            leading: Icon(
-              Icons.exit_to_app,
-              color: bgColor,
-              size: 26,
+              Icons.exit_to_app_rounded,
+              size: 22,
             ),
             onTap: () => {
             Navigator.pop(context),
