@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: 30,),
               Container(
-                width: MediaQuery.of(context).size.width * 0.9, // Adjust the width as needed
+                width: MediaQuery.of(context).size.width * 0.95,
                 child: Image.asset(
                   'Images/hero.png',
                   fit: BoxFit.contain, // Use BoxFit.contain to fit the image within the container
@@ -106,7 +106,6 @@ class HomeScreen extends StatelessWidget {
                    width: MediaQuery.of(context).size.width * 0.455,
                    child: GestureDetector(
                      onTap: () {
-                       // Navigate to the new page when the Card is tapped
                        Navigator.push(
                          context,
                          MaterialPageRoute(builder: (context) {
@@ -142,7 +141,6 @@ class HomeScreen extends StatelessWidget {
                    width: MediaQuery.of(context).size.width * 0.455,
                    child: GestureDetector(
                      onTap: () {
-                       // Navigate to the new page when the Card is tapped
                        Navigator.push(
                          context,
                          MaterialPageRoute(builder: (context) {
@@ -182,7 +180,6 @@ class HomeScreen extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.455,
                     child: GestureDetector(
                       onTap: () {
-                        // Navigate to the new page when the Card is tapped
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) {
