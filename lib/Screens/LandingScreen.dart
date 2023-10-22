@@ -51,7 +51,7 @@ class _PlantLandingPageState extends State<PlantLandingPage> {
               color: Colors.white,
               padding: EdgeInsets.all(16),
               child: Text(
-                'Version 1.0',
+                'Version 2.0',
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.black,
