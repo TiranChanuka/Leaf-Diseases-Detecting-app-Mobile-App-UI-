@@ -32,6 +32,7 @@ dependencies:
   device_preview: ^1.1.0
   dio: ^5.3.0
   easy_sidemenu: ^0.5.0
+  google_fonts: ^3.0.0
 
 
 
@@ -46,6 +47,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   image_picker: ^0.8.4+4
+  flutter_rating_bar: ^4.0.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -69,8 +71,21 @@ flutter:
   assets:
      - Images/logo.png
      - Images/back.jpg
+     - Images/hero.png
+     - Images/aboutUs.png
+     - Images/feedback.png
+     - Images/PlantFront/tomatofront.png
+     - Images/PlantFront/potatofront.png
+     - Images/PlantFront/grapesfront.png
+     - Images/PlantFront/teafront.png
+     - Images/PlantFront/cornfront.png
+     - Images/PlantFront/sugarcanefront.png
      - Images/Plants/potato.png
      - Images/Plants/tomato.png
+     - Images/Plants/tomatoNew.png
+     - Images/Plants/pota.png
+     - Images/Plants/grap.png
+     - Images/Plants/sugar.png
      - Images/Plants/grapes.png
      - Images/Plants/tea.png
      - Images/Plants/sugarcane.png

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:plant_app/Colors.dart';
 import 'package:plant_app/Widgets/BackgroundImg.dart';
 import 'package:plant_app/Widgets/BackgroundImgOverlay.dart';
@@ -9,67 +10,157 @@ class AboutUs extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         title: Text(''),
-        backgroundColor: Colors.transparent,
+        backgroundColor: wColor,
         elevation: 0,
-        centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        flexibleSpace: Container(
-          padding: EdgeInsets.only(top: 10),
-          child: Center(
-            child: Image.asset(
-              'Images/logoWhite.png',
-              height: 100,
-            ),
-          ),
-        ),
       ),
-      body: Stack(
+      body: ListView(
         children: [
-          BackgroundImg(),
-          BackgoundImgOverlay(),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 100),
-            child: Text(
-              "About Us",
-              style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 135),
-            child: Text(
-              'Welcome to the Agrio Mobile App - Your CNN-Based Solution for Detecting and Identifying Plant Diseases in Real-Time!\nAt Agrio, we are on a mission to revolutionize agriculture through cutting-edge technology. Our mobile application leverages the power of Convolutional Neural Networks (CNNs) to detect and identify plant diseases using real-time images of plants. Plant diseases pose a significant threat to agricultural productivity, impacting both quality and quantity.',
-              style: TextStyle(color: Colors.white, fontSize: 18),
-            ),
-          ),
-          Positioned(
-            bottom: 16,
-            left: 16,
-            right: 16,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ContactInfoBox(
-                  title: 'Phone Number',
-                  info: '011-456-7890',
-                  icon: Icons.phone,
-
+          Column(
+            children: [
+              SizedBox(height: 20,),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.95,
+                child: Image.asset(
+                  'Images/aboutUs.png',
+                  fit: BoxFit.contain, // Use BoxFit.contain to fit the image within the container
                 ),
-                ContactInfoBox(
-                  title: 'Email',
-                  info: 'agriohelps@agrio.com',
-                  icon: Icons.email,
+              ),
+              SizedBox(height: 30,),
+              Padding(padding: const EdgeInsets.symmetric(horizontal: 35,),
+              child: Text(
+                  "Welcome to the agrio mobile app - your CNN-Based solution for detecting ans identifying plant diseases in real-time !",
+                  style:GoogleFonts.poppins(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                  )
+              ),
+              ),
+              SizedBox(height: 30,),
+              Padding(padding: const EdgeInsets.symmetric(horizontal: 35,),
+                child: Text(
+                    "At agrio, we are on a mission to revolution agriculture through cutting-edge technology. Our mobile application leverage the power of convolutional neural network (CNN) to detect and identifies plant disease using real time images of plant.",
+                    style:GoogleFonts.poppins(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
+                    )
                 ),
-              ],
-            ),
+              ),
+              SizedBox(height: 30,),
+              ElevatedButton(
+                onPressed: (){},
+                style: ElevatedButton.styleFrom(
+                  primary: buttonColor,
+                  minimumSize: Size(344, 90),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: Container(
+                  width: 300,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  'Contact Number',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    color: bgColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(width: 1), // Add left margin
+                                Text(
+                                  '011-234-5678',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Icon(Icons.add_ic_call_outlined, size: 30),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 18),
+              ElevatedButton(
+                onPressed: (){},
+                style: ElevatedButton.styleFrom(
+                  primary: buttonColor,
+                  minimumSize: Size(344, 90),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: Container(
+                  width: 300,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  'Email',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    color: bgColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(width: 1), // Add left margin
+                                Text(
+                                  'agriohelps@agrio.com',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Icon(Icons.email_outlined, size: 30),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
-      ),
+      )
     );
   }
 }
