@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:plant_app/Colors.dart';
 import 'package:plant_app/Widgets/BackgroundImg.dart';
 import 'package:plant_app/Widgets/BackgroundImgOverlay.dart';
@@ -11,41 +12,59 @@ class ResultShowing extends StatelessWidget {
   final String solution;
 
   ResultShowing(this.confidence, this.disease, this.solution);
+
+  void _showPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: _buildMenuSection(context, confidence, disease, solution),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Close',
+                style:GoogleFonts.poppins(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: bgColor
+                ) ,),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(''),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back_ios_new),
+          color: Colors.black,
           onPressed: () {
-            Navigator.pop(
-                context); // This will navigate back to the previous screen
+            Navigator.pop(context);
           },
         ),
-        flexibleSpace: Container(
-          padding: EdgeInsets.only(top: 10),
-          child: Center(
-            child: Image.asset(
-              'Images/logoWhite.png',
-              height: 100,
-            ),
-          ),
-        ), //  Add a back button icon
       ),
       body: Stack(
         children: [
-          BackgroundImg(),
-          BackgoundImgOverlay(),
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: _buildMenuSection(context,confidence,disease,solution),
+              child: ElevatedButton(
+                onPressed: () {
+                  _showPopup(context);
+                },
+                child: Text('Show Popup'),
+              ),
             ),
           ),
         ],
@@ -53,31 +72,7 @@ class ResultShowing extends StatelessWidget {
     );
   }
 
-
-  Widget _buildBackgroundImage() {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('Images/back.jpg'), // Background image
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-        child: Container(
-          color: Colors.black.withOpacity(0.1),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBlurOverlay() {
-    return Container(
-      color: Colors.black.withOpacity(0.5),
-    );
-  }
-  Widget _buildMenuSection(BuildContext context, double confidence,String disease,String solution) {
-
+  Widget _buildMenuSection(BuildContext context, double confidence, String disease, String solution) {
     return Container(
       width: double.infinity,
       height: 450,
@@ -86,7 +81,6 @@ class ResultShowing extends StatelessWidget {
         border: Border.all(color: Colors.white),
         borderRadius: BorderRadius.circular(15),
       ),
-
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -112,44 +106,17 @@ class ResultShowing extends StatelessWidget {
               ),
             ),
           ),
-           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: SizedBox(
-                height: 200,
-                child: SingleChildScrollView(
-                  child: Text(
-                    '\n$solution\n',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 15,
-              ),
-              child: Container(
-                width: 300,
-                height: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: bgColor,
-                ),
-                child: Center(
-                  child: Text(
-                    'Accuracy $confidence %'.toUpperCase(),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: SizedBox(
+              height: 300,
+              child: SingleChildScrollView(
+                child: Text(
+                  '\n$solution\n',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
