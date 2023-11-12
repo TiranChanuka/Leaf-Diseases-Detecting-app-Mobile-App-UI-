@@ -69,10 +69,7 @@ class NavBar extends StatelessWidget {
                 fontWeight: FontWeight.w400,
               ) ,),
             onTap: ()=>{
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => OurRating()),
-              ),
+              Navigator.pop(context),
             },
           ),
           ListTile(
