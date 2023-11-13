@@ -8,6 +8,7 @@ import 'package:plant_app/ScanScreens/ScanPagePotato.dart';
 import 'package:plant_app/ScanScreens/ScanPageTea.dart';
 import 'package:plant_app/Screens/SideMenu.dart';
 import 'package:plant_app/ScanScreens/ScanPageSugarCane.dart';
+import 'package:plant_app/Sinhala/Screens/HomeScreen.dart';
 import '../ScanScreens/ScanPageTomato.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
@@ -37,13 +38,36 @@ class HomeScreen extends StatelessWidget {
               return <PopupMenuEntry<String>>[
                 PopupMenuItem<String>(
                   value: 'english',
-                  child: Text('English'),
+                  child: ListTile(
+                    title: Text('English',
+                      style:GoogleFonts.poppins(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                      ) ,),
+                    onTap: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                      ),
+                    },
+                  ),
                 ),
                 PopupMenuItem<String>(
                   value: 'sinhala',
-                  child: Text('Sinhala'),
+                  child: ListTile(
+                    title: Text('සිංහල',
+                      style:GoogleFonts.poppins(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                      ) ,),
+                    onTap: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreenSinhala()),
+                      ),
+                    },
+                  ),
                 ),
-                // Add more language options as needed
               ];
             },
           ),
@@ -129,6 +153,20 @@ class HomeScreen extends StatelessWidget {
                                  width: 160.0,
                                ),
                              ),
+                             Text(
+                               "Tomato Leaf",
+                               style:GoogleFonts.poppins(
+                                   fontSize: 15,
+                                   fontWeight: FontWeight.w600,
+                             ),
+                             ),
+                             Text(
+                               "Identifier",
+                               style:GoogleFonts.poppins(
+                                 fontSize: 10,
+                                 fontWeight: FontWeight.w400,
+                               ),
+                             ),
                            ],
                          ),
                        ),
@@ -162,6 +200,20 @@ class HomeScreen extends StatelessWidget {
                                  'Images/PlantFront/potatofront.png',
                                  height: 160.0,
                                  width: 160.0,
+                               ),
+                             ),
+                             Text(
+                               "Potato Leaf",
+                               style:GoogleFonts.poppins(
+                                 fontSize: 16,
+                                 fontWeight: FontWeight.w600,
+                               ),
+                             ),
+                             Text(
+                               "Identifier",
+                               style:GoogleFonts.poppins(
+                                 fontSize: 10,
+                                 fontWeight: FontWeight.w400,
                                ),
                              ),
                            ],
@@ -203,6 +255,20 @@ class HomeScreen extends StatelessWidget {
                                   width: 160.0,
                                 ),
                               ),
+                              Text(
+                                "Grapes Leaf",
+                                style:GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Text(
+                                "Identifier",
+                                style:GoogleFonts.poppins(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -236,6 +302,20 @@ class HomeScreen extends StatelessWidget {
                                   'Images/PlantFront/teafront.png',
                                   height: 160.0,
                                   width: 160.0,
+                                ),
+                              ),
+                              Text(
+                                "Tea Leaf",
+                                style:GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Text(
+                                "Identifier",
+                                style:GoogleFonts.poppins(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ],
@@ -279,6 +359,20 @@ class HomeScreen extends StatelessWidget {
                                   width: 160.0,
                                 ),
                               ),
+                              Text(
+                                "Corn Leaf",
+                                style:GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Text(
+                                "Identifier",
+                                style:GoogleFonts.poppins(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -312,6 +406,20 @@ class HomeScreen extends StatelessWidget {
                                   'Images/PlantFront/sugarcanefront.png',
                                   height: 160.0,
                                   width: 160.0,
+                                ),
+                              ),
+                              Text(
+                                "Sugarcane Leaf",
+                                style:GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Text(
+                                "Identifier",
+                                style:GoogleFonts.poppins(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ],
