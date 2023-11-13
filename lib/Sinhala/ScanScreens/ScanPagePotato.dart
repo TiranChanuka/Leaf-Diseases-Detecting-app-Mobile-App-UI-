@@ -42,7 +42,7 @@ class _ImagePickerPageState extends State<ImagePickerPagePotatoSinhala> {
       return; // No image to upload
     }
 
-    final url = 'https://potato-x0q6.onrender.com/predict';
+    final url = 'https://potato-x0q6.onrender.com/predict?language=si';
 
     try {
       final dio = Dio();
@@ -54,7 +54,6 @@ class _ImagePickerPageState extends State<ImagePickerPagePotatoSinhala> {
       if (response.statusCode == 200) {
         final result = response.data;
         // Handle the response from the backend as needed
-        print(result);
         Navigator.push(
           context,
           MaterialPageRoute(

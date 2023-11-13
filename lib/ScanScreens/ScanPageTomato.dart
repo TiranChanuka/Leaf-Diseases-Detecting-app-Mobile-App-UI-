@@ -42,7 +42,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
       return; // No image to upload
     }
 
-    final url = 'https://plant-uucd.onrender.com/predict';
+    final url = 'https://plant-uucd.onrender.com/predict?language=en';
 
     try {
       final dio = Dio();

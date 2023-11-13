@@ -42,7 +42,7 @@ class _ImagePickerPageState extends State<ImagePickerPageGrapes> {
       return; // No image to upload
     }
 
-    final url = 'https://grape-916q.onrender.com/predict';
+    final url = 'https://grape-916q.onrender.com/predict?language=en';
 
     try {
       final dio = Dio();

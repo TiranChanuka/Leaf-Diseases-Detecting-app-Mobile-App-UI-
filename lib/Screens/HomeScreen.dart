@@ -445,15 +445,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Future<void> _fetchHelloWorld() async {
-    final response = await http.get(Uri.parse('http://127.0.0.1:8000/ping'));
-
-    if (response.statusCode == 200) {
-      final responseData = response.body;
-      print(responseData);
-      // You can parse the JSON response if needed, but for this example, we're printing the entire response.
-    } else {
-      print('Failed to fetch "Hello, World!"');
-    }
-  }
 }

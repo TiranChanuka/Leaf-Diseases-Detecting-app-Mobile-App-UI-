@@ -42,7 +42,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTea> {
       return; // No image to upload
     }
 
-    final url = 'https://tea-hkgq.onrender.com/predict';
+    final url = 'https://tea-hkgq.onrender.com/predict?language=en';
 
     try {
       final dio = Dio();

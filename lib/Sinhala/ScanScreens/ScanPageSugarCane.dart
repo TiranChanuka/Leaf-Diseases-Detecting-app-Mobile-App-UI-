@@ -42,7 +42,7 @@ class _ImagePickerPageState extends State<ImagePickerPageSugarCaneSinhala> {
       return; // No image to upload
     }
 
-    final url = 'https://sugarcane.onrender.com/predict';
+    final url = 'https://sugarcane.onrender.com/predict?language=si';
 
     try {
       final dio = Dio();
@@ -54,7 +54,6 @@ class _ImagePickerPageState extends State<ImagePickerPageSugarCaneSinhala> {
       if (response.statusCode == 200) {
         final result = response.data;
         // Handle the response from the backend as needed
-        print(result);
         Navigator.push(
           context,
           MaterialPageRoute(

@@ -41,7 +41,7 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
       return; // No image to upload
     }
 
-    final url = 'https://potato-x0q6.onrender.com/predict';
+    final url = 'https://potato-x0q6.onrender.com/predict?language=en';
 
     try {
       final dio = Dio();

@@ -6,35 +6,28 @@ import 'package:plant_app/Colors.dart';
 import 'package:plant_app/Widgets/BackgroundImg.dart';
 import 'package:plant_app/Widgets/BackgroundImgOverlay.dart';
 
-class ResultShowing extends StatelessWidget {
+class ResultShowing extends StatefulWidget {
   final double confidence;
   final String disease;
   final String solution;
 
-  ResultShowing(this.confidence, this.disease, this.solution);
+  const ResultShowing(this.confidence, this.disease, this.solution);
 
-  void _showPopup(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: _buildMenuSection(context, confidence, disease, solution),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Close',
-                style:GoogleFonts.poppins(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: bgColor
-                ) ,),
-            ),
-          ],
-        );
-      },
-    );
+  @override
+  _ResultShowingState createState() => _ResultShowingState();
+}
+
+class _ResultShowingState extends State<ResultShowing> {
+  bool _showPopup = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        _showPopup = true;
+      });
+    });
   }
 
   @override
@@ -56,15 +49,11 @@ class ResultShowing extends StatelessWidget {
       body: Stack(
         children: [
           Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  _showPopup(context);
-                },
-                child: Text('Show Popup'),
-              ),
+            alignment: Alignment.center,
+            child: _showPopup
+                ? _buildMenuSection(context, widget.confidence, widget.disease, widget.solution)
+                : Center(
+              child: CircularProgressIndicator(),
             ),
           ),
         ],
