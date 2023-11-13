@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:plant_app/Colors.dart';
 import 'package:plant_app/Widgets/BackgroundImg.dart';
 import 'package:plant_app/Widgets/BackgroundImgOverlay.dart';
@@ -9,7 +10,8 @@ class UserFeedback {
   final String rating;
   final String feedback;
 
-  UserFeedback({required this.name, required this.rating, required this.feedback});
+  UserFeedback(
+      {required this.name, required this.rating, required this.feedback});
 }
 
 class OurRating extends StatefulWidget {
@@ -54,74 +56,88 @@ class _OurRatingState extends State<OurRating> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         title: Text(''),
-        backgroundColor: Colors.transparent,
+        backgroundColor: wColor,
         elevation: 0,
-        centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
-            Navigator.pop(
-                context); // This will navigate back to the previous screen
+            Navigator.pop(context);
           },
         ),
-        flexibleSpace: Container(
-          padding: EdgeInsets.only(top: 10),
-          child: Center(
-            child: Image.asset(
-              'Images/logoWhite.png',
-              height: 100,
-            ),
-          ),
-        ), //  Add a back button icon
       ),
-      body: Stack(
+      body: ListView(
         children: [
-          BackgroundImg(),
-          BackgoundImgOverlay(),
-          ListView.builder(
-            itemCount: userFeedbackList.length,
-            itemBuilder: (context, index) {
-              UserFeedback userFeedback = userFeedbackList[index];
-              return Container(
-                decoration: BoxDecoration(
-                  color: fbColor.withOpacity(0.18),
-                  border: Border.all(color: sideMenuColor, width: 1),
-                  borderRadius: BorderRadius.circular(8.0),
+          Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.95,
+                child: Image.asset(
+                  'Images/ourRating.png',
+                  fit: BoxFit.contain,
                 ),
-                padding: EdgeInsets.all(25.0), // Padding added to the Container
-                margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                
-                child: ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: AssetImage('Images/user.png',),
-                    radius: 40.0,
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              for (UserFeedback userFeedback in userFeedbackList)
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: bgColor, width: 1),
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                  title: Text(userFeedback.name,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.star, color: Colors.orange),
-                          Text('${userFeedback.rating} / 5',style: TextStyle(color: Colors.white),),
-                        ],
+                  padding: EdgeInsets.all(25.0),
+                  margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: AssetImage(
+                        'Images/user.png',
                       ),
-                      SizedBox(height: 5),
-                      Text(userFeedback.feedback,style: TextStyle(color: Colors.white)),
-                    ],
+                      radius: 40.0,
+                    ),
+                    title: Text(
+                      userFeedback.name,
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.star, color: bgColor),
+                            Text(
+                              '${userFeedback.rating} / 5',
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          userFeedback.feedback,
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              );
-            },
+            ],
           ),
+
         ],
       ),
     );
