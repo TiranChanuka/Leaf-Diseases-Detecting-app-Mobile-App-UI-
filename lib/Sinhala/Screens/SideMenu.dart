@@ -5,7 +5,7 @@ import 'package:plant_app/Screens/AboutUs.dart';
 import 'package:plant_app/Screens/Feedback.dart';
 import 'package:plant_app/Screens/OurRatingScreen.dart';
 
-class NavBar extends StatelessWidget {
+class NavBarSinhala extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -29,7 +29,7 @@ class NavBar extends StatelessWidget {
               Icons.favorite_outline_rounded,
               size: 22,
             ),
-            title: Text('about',
+            title: Text('අපි ගැන',
               style:GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
@@ -46,7 +46,7 @@ class NavBar extends StatelessWidget {
               Icons.feedback_outlined,
               size: 22,
             ),
-            title: Text('feedback & Rate',
+            title: Text('ප්‍රතිචාර ලබාදීම',
               style:GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
@@ -63,7 +63,7 @@ class NavBar extends StatelessWidget {
               Icons.star_border_outlined,
               size: 22,
             ),
-            title: Text('our rating',
+            title: Text('ලැබුන ප්‍රතිචාර',
               style:GoogleFonts.poppins(
                 fontSize: 20,
                 fontWeight: FontWeight.w400,
@@ -76,7 +76,7 @@ class NavBar extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('exit',
+            title: Text('ඉවත්වීම',
                 style:GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,

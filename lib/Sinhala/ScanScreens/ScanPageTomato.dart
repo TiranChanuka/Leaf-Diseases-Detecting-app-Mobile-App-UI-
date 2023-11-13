@@ -4,17 +4,17 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:plant_app/Colors.dart';
-import 'package:plant_app/ScanScreens/ScanPagePotato.dart';
+import 'package:plant_app/Sinhala/Widgets/ScanpageCenter.dart';
 import 'package:plant_app/Widgets/ScanpageCenter.dart';
 import '../Screens/ResultShowingScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ImagePickerPageTomato extends StatefulWidget {
+class ImagePickerPageTomatoSinhala extends StatefulWidget {
   @override
   _ImagePickerPageState createState() => _ImagePickerPageState();
 }
 
-class _ImagePickerPageState extends State<ImagePickerPageTomato> {
+class _ImagePickerPageState extends State<ImagePickerPageTomatoSinhala> {
   File? _image;
 
   Future<void> _takePicture() async {
@@ -92,7 +92,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
           Column(
             children: [
               BannerCardTomato(),
-              ScanPageCenter(),
+              ScanPageCenterSinhala(),
               SizedBox(height: 47),
               ElevatedButton(
                 onPressed: _takePicture,
@@ -115,9 +115,9 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                             Row(
                               children: [
                                 Text(
-                                  'Take Picture',
+                                  'ශාකයේ ඡායාරූපයක්',
                                   style: GoogleFonts.poppins(
-                                    fontSize: 25,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                   ),
@@ -128,7 +128,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                               children: [
                                 SizedBox(width: 5), // Add left margin
                                 Text(
-                                  'Of your plant',
+                                  'ලබා ගන්න',
                                   style: GoogleFonts.poppins(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
@@ -167,9 +167,9 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                             Row(
                               children: [
                                 Text(
-                                  'Import',
+                                  'ශාකයේ ඡායාරූපයක්',
                                   style: GoogleFonts.poppins(
-                                    fontSize: 25,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                   ),
@@ -180,7 +180,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
                               children: [
                                 SizedBox(width: 1), // Add left margin
                                 Text(
-                                  'from your gallery',
+                                  'ඇතුලත් කරන්න',
                                   style: GoogleFonts.poppins(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
@@ -209,7 +209,7 @@ class _ImagePickerPageState extends State<ImagePickerPageTomato> {
 
 void main() {
   runApp(MaterialApp(
-    home: ImagePickerPageTomato(),
+    home: ImagePickerPageTomatoSinhala(),
   ));
 }
 
@@ -238,7 +238,7 @@ class BannerCardTomato extends StatelessWidget {
                       children: [
                         SizedBox(width: 25), // Add left margin
                         Text(
-                          'Tomato Leaf',
+                          'තක්කාලි පත්‍ර',
                           style: GoogleFonts.poppins(
                             fontSize: 28,
                             fontWeight: FontWeight.w600,
@@ -251,7 +251,7 @@ class BannerCardTomato extends StatelessWidget {
                       children: [
                         SizedBox(width: 30), // Add left margin
                         Text(
-                          'Identifier',
+                          'හඳුනාගැනීම',
                           style: GoogleFonts.poppins(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
