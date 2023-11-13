@@ -46,7 +46,7 @@ class NavBar extends StatelessWidget {
               Icons.feedback_outlined,
               size: 22,
             ),
-            title: Text('Feedback & Rate',
+            title: Text('feedback & Rate',
               style:GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
@@ -63,17 +63,20 @@ class NavBar extends StatelessWidget {
               Icons.star_border_outlined,
               size: 22,
             ),
-            title: Text('Share',
+            title: Text('our rating',
               style:GoogleFonts.poppins(
                 fontSize: 20,
                 fontWeight: FontWeight.w400,
               ) ,),
             onTap: ()=>{
-              Navigator.pop(context),
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context)=>OurRating())
+              ),
             },
           ),
           ListTile(
-            title: Text('Exit',
+            title: Text('exit',
                 style:GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
