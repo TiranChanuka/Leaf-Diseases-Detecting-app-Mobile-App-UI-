@@ -1,10 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:plant_app/Colors.dart';
-import 'package:plant_app/Widgets/BackgroundImg.dart';
-import 'package:plant_app/Widgets/BackgroundImgOverlay.dart';
 
 class ResultShowing extends StatefulWidget {
   final double confidence;
@@ -51,7 +46,8 @@ class _ResultShowingState extends State<ResultShowing> {
           Align(
             alignment: Alignment.center,
             child: _showPopup
-                ? _buildMenuSection(context, widget.confidence, widget.disease, widget.solution)
+                ? _buildMenuSection(
+                context, widget.confidence, widget.disease, widget.solution)
                 : Center(
               child: CircularProgressIndicator(),
             ),
@@ -61,58 +57,66 @@ class _ResultShowingState extends State<ResultShowing> {
     );
   }
 
-  Widget _buildMenuSection(BuildContext context, double confidence, String disease, String solution) {
-    return Container(
-      width: double.infinity,
-      height: 450,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Colors.white),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: Container(
-                width: 60,
-                height: 6,
-                decoration: BoxDecoration(
-                    color: bgColor, borderRadius: BorderRadius.circular(3)),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              '\n$disease',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: SizedBox(
-              height: 300,
-              child: SingleChildScrollView(
-                child: Text(
-                  '\n$solution\n',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400,
-                  ),
+  Widget _buildMenuSection(
+      BuildContext context, double confidence, String disease, String solution) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: Container(
+                  width: 60,
+                  height: 6,
+                  decoration: BoxDecoration(
+                      color: bgColor, borderRadius: BorderRadius.circular(3)),
                 ),
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Text(
+                '\n$disease',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  Text(
+                    '\n$solution\n',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: ResultShowing(0.9, 'Disease Name', 'Long description goes here.'),
+  ));
 }

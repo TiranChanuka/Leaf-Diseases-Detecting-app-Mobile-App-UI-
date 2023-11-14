@@ -4,6 +4,8 @@ import 'package:plant_app/Colors.dart';
 import 'package:plant_app/Screens/AboutUs.dart';
 import 'package:plant_app/Screens/Feedback.dart';
 import 'package:plant_app/Screens/OurRatingScreen.dart';
+import 'package:plant_app/Sinhala/Screens/AboutUs.dart';
+import 'package:plant_app/Sinhala/Screens/Feedback.dart';
 
 class NavBarSinhala extends StatelessWidget {
   @override
@@ -37,7 +39,7 @@ class NavBarSinhala extends StatelessWidget {
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AboutUs()),
+                MaterialPageRoute(builder: (context) => AboutUsSinhala()),
               ),
             },
           ),
@@ -54,7 +56,7 @@ class NavBarSinhala extends StatelessWidget {
             onTap: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FeedbackPage()),
+                MaterialPageRoute(builder: (context) => FeedbackPageSinhala()),
               ),
             },
           ),

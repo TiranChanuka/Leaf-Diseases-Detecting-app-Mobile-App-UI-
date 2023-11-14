@@ -4,7 +4,7 @@ import 'package:plant_app/Colors.dart';
 import 'package:plant_app/Widgets/BackgroundImg.dart';
 import 'package:plant_app/Widgets/BackgroundImgOverlay.dart';
 
-class AboutUs extends StatelessWidget {
+class AboutUsSinhala extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,7 @@ class AboutUs extends StatelessWidget {
               SizedBox(height: 30,),
               Padding(padding: const EdgeInsets.symmetric(horizontal: 35,),
               child: Text(
-                  "Welcome to the agrio mobile app - your CNN-Based solution for detecting ans identifying plant diseases in real-time !",
+                  "ඇග්‍රියෝ ජංගම යෙදුම වෙත සාදරයෙන් පිළිගනිමු - තත්‍ය කාලීනව ශාක රෝග හඳුනා ගැනීම සඳහා ඔබේ CNN-පාදක විසඳුම!",
                   style:GoogleFonts.poppins(
                     fontSize: 15,
                     fontWeight: FontWeight.w400,
@@ -46,7 +46,7 @@ class AboutUs extends StatelessWidget {
               SizedBox(height: 30,),
               Padding(padding: const EdgeInsets.symmetric(horizontal: 35,),
                 child: Text(
-                    "At agrio, we are on a mission to revolution agriculture through cutting-edge technology. Our mobile application leverage the power of convolutional neural network (CNN) to detect and identifies plant disease using real time images of plant.",
+                    "ඇග්‍රියෝ හි, අපි නවීන තාක්‍ෂණය හරහා කෘෂිකර්මාන්තයේ විප්ලවයේ මෙහෙවරක යෙදී සිටිමු. අපගේ ජංගම යෙදුම ශාකයේ තත්‍ය කාලීන රූප භාවිතයෙන් ශාක රෝග හඳුනා ගැනීමට convolutional neural network (CNN) භාවිතා කරයි.",
                     style:GoogleFonts.poppins(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
