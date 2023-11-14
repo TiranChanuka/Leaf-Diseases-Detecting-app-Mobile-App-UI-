@@ -115,7 +115,7 @@ class _OurRatingState extends State<OurRating> {
                           children: [
                             Icon(Icons.star, color: bgColor),
                             Text(
-                              '${userFeedback.rating} / 5',
+                              '${userFeedback.rating} / 5.0',
                               style: GoogleFonts.poppins(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,

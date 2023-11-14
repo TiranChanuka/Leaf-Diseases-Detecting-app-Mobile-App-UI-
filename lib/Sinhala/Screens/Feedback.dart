@@ -17,16 +17,16 @@ class _FeedbackPageState extends State<FeedbackPageSinhala> {
   String _feedbackText = '';
   String _name='';
 
-  String convertToStars(double rating) {
-    int numberOfStars = rating.round();
-    return '*' * numberOfStars;
-  }
+  // String convertToStars(double rating) {
+  //   int numberOfStars = rating.round();
+  //   return '*' * numberOfStars;
+  // }
 
   Future<void> feedbackSend() async {
     if (_rating == 0 && _feedbackText == '') {
       return;
     }
-    String stars = convertToStars(_rating);
+    // String stars = convertToStars(_rating);
 
     // final url = 'http://10.0.2.2:8000/feedback';
     final url = 'https://plant-uucd.onrender.com/feedback';
@@ -36,7 +36,7 @@ class _FeedbackPageState extends State<FeedbackPageSinhala> {
     try {
       final dio = Dio();
       final formData =
-          FormData.fromMap({'rating': stars, 'name':_name, 'feedback': _feedbackText});
+          FormData.fromMap({'rating': _rating, 'name':_name, 'feedback': _feedbackText});
       final response = await dio.post(url, data: formData);
       if (response.statusCode == 200) {
         final result = response.data;
