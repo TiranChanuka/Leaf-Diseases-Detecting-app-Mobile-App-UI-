@@ -32,7 +32,7 @@ dependencies:
   device_preview: ^1.1.0
   dio: ^5.3.0
   easy_sidemenu: ^0.5.0
-  google_fonts: ^3.0.0
+  google_fonts: ^6.1.0
 
 
 
@@ -74,25 +74,21 @@ flutter:
      - Images/hero.png
      - Images/aboutUs.png
      - Images/feedback.png
+     - Images/ourRating.png
      - Images/PlantFront/tomatofront.png
      - Images/PlantFront/potatofront.png
      - Images/PlantFront/grapesfront.png
      - Images/PlantFront/teafront.png
      - Images/PlantFront/cornfront.png
      - Images/PlantFront/sugarcanefront.png
-     - Images/Plants/potato.png
-     - Images/Plants/tomato.png
      - Images/Plants/tomatoNew.png
      - Images/Plants/pota.png
      - Images/Plants/grap.png
      - Images/Plants/sugar.png
-     - Images/Plants/grapes.png
      - Images/Plants/tea.png
-     - Images/Plants/sugarcane.png
      - Images/Plants/corn.png
      - Images/logoWhite.png
      - Images/user.png
-     - Images/Simg.jpg
      - Images/SImg.png
   #   - images/a_dot_ham.jpeg
 

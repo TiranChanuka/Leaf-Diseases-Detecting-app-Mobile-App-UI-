@@ -4,14 +4,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:plant_app/Colors.dart';
 import 'package:plant_app/Screens/HomeScreen.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:plant_app/Sinhala/Screens/HomeScreen.dart';
 
 
-class FeedbackPage extends StatefulWidget {
+class FeedbackPageSinhala extends StatefulWidget {
   @override
   _FeedbackPageState createState() => _FeedbackPageState();
 }
 
-class _FeedbackPageState extends State<FeedbackPage> {
+class _FeedbackPageState extends State<FeedbackPageSinhala> {
   double _rating = 0.0;
   String _feedbackText = '';
   String _name='';
@@ -43,7 +44,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
         print(result);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => HomeScreenSinhala()),
         );
       } else {
         print('Failed to submit : ${response.statusMessage}');
@@ -84,7 +85,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
               SizedBox(height: 30,),
               Padding(padding: const EdgeInsets.symmetric(horizontal: 35,),
                 child: Text(
-                    "To help us serve you better and enhance our services, we kindly request your feedback. Your thoughts and opinions are invaluable to us and will contribute to making our app and services even better.",
+                    "ඔබට වඩා හොඳින් සේවය කිරීමට සහ අපගේ සේවාවන් වැඩිදියුණු කිරීමට අපට උදවු කිරීමට, අපි ඔබේ ප්‍රතිපෝෂණය කාරුණිකව ඉල්ලා සිටිමු. ඔබගේ අදහස් අපට අගනා වන අතර අපගේ යෙදුම සහ සේවාවන් වඩාත් යහපත් කිරීමට එය දායක වනු ඇත.",
                     style:GoogleFonts.poppins(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
@@ -94,7 +95,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
               SizedBox(height: 30,),
               Center(
                 child: Text(
-                  "Rate your experience",
+                  "ඔබේ අත්දැකීම ශ්‍රේණිගත කරන්න",
                     style:GoogleFonts.poppins(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -129,7 +130,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                   },
                   maxLines: 1,
                   decoration: InputDecoration(
-                    hintText: 'Enter your Name...',
+                    hintText: 'ඔබගේ නම ඇතුලත් කරන්න...',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(width: 2, color: buttonColor),
                         borderRadius: BorderRadius.circular(18),),
@@ -148,7 +149,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                   },
                   maxLines: 5,
                   decoration: InputDecoration(
-                    hintText: 'Enter your Feedback...',
+                    hintText: 'ඔබගේ ප්‍රතිපෝෂණ ඇතුලත් කරන්න...',
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(width: 2, color: buttonColor),
                         borderRadius: BorderRadius.circular(18),),
@@ -173,7 +174,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                   width: 300,
                   child: Center(
                     child: Text(
-                      'Submit',
+                      'ඉදිරිපත් කරන්න',
                       style: GoogleFonts.poppins(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,

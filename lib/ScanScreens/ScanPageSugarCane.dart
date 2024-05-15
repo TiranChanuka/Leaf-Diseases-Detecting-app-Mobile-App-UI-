@@ -42,7 +42,7 @@ class _ImagePickerPageState extends State<ImagePickerPageSugarCane> {
       return; // No image to upload
     }
 
-    final url = 'https://sugarcane.onrender.com/predict';
+    final url = 'https://sugarcane.onrender.com/predict?language=en';
 
     try {
       final dio = Dio();

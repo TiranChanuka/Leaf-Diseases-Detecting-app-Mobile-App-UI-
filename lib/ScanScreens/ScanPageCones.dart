@@ -42,7 +42,7 @@ class _ImagePickerPageState extends State<ImagePickerPageCones> {
       return; // No image to upload
     }
 
-    final url = 'https://corn-server.onrender.com/predict';
+    final url = 'https://corn-server.onrender.com/predict?language=en';
 
     try {
       final dio = Dio();

@@ -5,15 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:plant_app/Colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plant_app/Sinhala/Widgets/ScanpageCenter.dart';
 import 'package:plant_app/Widgets/ScanpageCenter.dart';
 import '../Screens/ResultShowingScreen.dart';
 
-class ImagePickerPagePotato extends StatefulWidget {
+class ImagePickerPagePotatoSinhala extends StatefulWidget {
   @override
   _ImagePickerPageState createState() => _ImagePickerPageState();
 }
 
-class _ImagePickerPageState extends State<ImagePickerPagePotato> {
+class _ImagePickerPageState extends State<ImagePickerPagePotatoSinhala> {
   File? _image;
 
   Future<void> _takePicture() async {
@@ -41,7 +42,7 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
       return; // No image to upload
     }
 
-    final url = 'https://potato-x0q6.onrender.com/predict?language=en';
+    final url = 'https://potato-x0q6.onrender.com/predict?language=si';
 
     try {
       final dio = Dio();
@@ -53,7 +54,6 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
       if (response.statusCode == 200) {
         final result = response.data;
         // Handle the response from the backend as needed
-        print(result);
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -93,7 +93,7 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
           Column(
             children: [
               BannerCardPotato(),
-              ScanPageCenter(),
+              ScanPageCenterSinhala(),
               SizedBox(height: 47),
               ElevatedButton(
                 onPressed: _takePicture,
@@ -116,9 +116,9 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
                             Row(
                               children: [
                                 Text(
-                                  'Take Picture',
+                                  'ශාකයේ ඡායාරූපයක්',
                                   style: GoogleFonts.poppins(
-                                    fontSize: 25,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                   ),
@@ -129,7 +129,7 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
                               children: [
                                 SizedBox(width: 5), // Add left margin
                                 Text(
-                                  'Of your plant',
+                                  'ලබා ගන්න',
                                   style: GoogleFonts.poppins(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
@@ -168,9 +168,9 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
                             Row(
                               children: [
                                 Text(
-                                  'Import',
+                                  'ශාකයේ ඡායාරූපයක්',
                                   style: GoogleFonts.poppins(
-                                    fontSize: 25,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                   ),
@@ -181,7 +181,7 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
                               children: [
                                 SizedBox(width: 1), // Add left margin
                                 Text(
-                                  'from your gallery',
+                                  'ඇතුලත් කරන්න',
                                   style: GoogleFonts.poppins(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
@@ -209,7 +209,7 @@ class _ImagePickerPageState extends State<ImagePickerPagePotato> {
 
 void main() {
   runApp(MaterialApp(
-    home: ImagePickerPagePotato(),
+    home: ImagePickerPagePotatoSinhala(),
   ));
 }
 
@@ -238,7 +238,7 @@ class BannerCardPotato extends StatelessWidget {
                       children: [
                         SizedBox(width: 25), // Add left margin
                         Text(
-                          'Potato Leaf',
+                          'අල පත්‍ර',
                           style: GoogleFonts.poppins(
                             fontSize: 28,
                             fontWeight: FontWeight.w600,
@@ -251,7 +251,7 @@ class BannerCardPotato extends StatelessWidget {
                       children: [
                         SizedBox(width: 30), // Add left margin
                         Text(
-                          'Identifier',
+                          'හඳුනාගැනීම',
                           style: GoogleFonts.poppins(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,

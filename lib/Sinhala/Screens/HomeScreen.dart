@@ -3,21 +3,23 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:plant_app/Colors.dart';
 import 'package:plant_app/ScanScreens/ScanPageCones.dart';
-import 'package:plant_app/ScanScreens/ScanPageGrapes.dart';
-import 'package:plant_app/ScanScreens/ScanPagePotato.dart';
-import 'package:plant_app/ScanScreens/ScanPageTea.dart';
-import 'package:plant_app/Screens/SideMenu.dart';
+import 'package:plant_app/Screens/HomeScreen.dart';
 import 'package:plant_app/ScanScreens/ScanPageSugarCane.dart';
-import 'package:plant_app/Sinhala/Screens/HomeScreen.dart';
-import '../ScanScreens/ScanPageTomato.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plant_app/Sinhala/ScanScreens/ScanPageCones.dart';
+import 'package:plant_app/Sinhala/ScanScreens/ScanPageGrapes.dart';
+import 'package:plant_app/Sinhala/ScanScreens/ScanPagePotato.dart';
+import 'package:plant_app/Sinhala/ScanScreens/ScanPageSugarCane.dart';
+import 'package:plant_app/Sinhala/ScanScreens/ScanPageTea.dart';
+import 'package:plant_app/Sinhala/ScanScreens/ScanPageTomato.dart';
+import 'package:plant_app/Sinhala/Screens/SideMenu.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreenSinhala extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavBar(),
+      drawer: NavBarSinhala (),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(''),
@@ -68,6 +70,7 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                 ),
+                // Add more language options as needed
               ];
             },
           ),
@@ -81,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Identify Crop',
+                    'බෝගවල රෝග',
                     style:GoogleFonts.poppins(
                       fontSize: 28,
                       fontWeight: FontWeight.w600,
@@ -93,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Diseases',
+                    'හඳුනාගනිමු',
                     style:GoogleFonts.poppins(
                       fontSize: 28,
                     ) ,
@@ -113,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Select Plant',
+                    'භෝග වර්ගයක් තෝරන්න',
                     style:GoogleFonts.poppins(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -133,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                        Navigator.push(
                          context,
                          MaterialPageRoute(builder: (context) {
-                           return ImagePickerPageTomato();
+                           return ImagePickerPageTomatoSinhala();
                          }),
                        );
                      },
@@ -154,14 +157,14 @@ class HomeScreen extends StatelessWidget {
                                ),
                              ),
                              Text(
-                               "Tomato Leaf",
+                               "තක්කාලි පත්‍ර",
                                style:GoogleFonts.poppins(
                                    fontSize: 15,
                                    fontWeight: FontWeight.w600,
                              ),
                              ),
                              Text(
-                               "Identifier",
+                               "හඳුනාගැනීම",
                                style:GoogleFonts.poppins(
                                  fontSize: 10,
                                  fontWeight: FontWeight.w400,
@@ -182,7 +185,7 @@ class HomeScreen extends StatelessWidget {
                        Navigator.push(
                          context,
                          MaterialPageRoute(builder: (context) {
-                           return ImagePickerPagePotato();
+                           return ImagePickerPagePotatoSinhala();
                          }),
                        );
                      },
@@ -203,14 +206,14 @@ class HomeScreen extends StatelessWidget {
                                ),
                              ),
                              Text(
-                               "Potato Leaf",
+                               "අල පත්‍ර",
                                style:GoogleFonts.poppins(
                                  fontSize: 16,
                                  fontWeight: FontWeight.w600,
                                ),
                              ),
                              Text(
-                               "Identifier",
+                               "හඳුනාගැනීම",
                                style:GoogleFonts.poppins(
                                  fontSize: 10,
                                  fontWeight: FontWeight.w400,
@@ -235,7 +238,7 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) {
-                            return ImagePickerPageGrapes();
+                            return ImagePickerPageGrapesSinhala();
                           }),
                         );
                       },
@@ -256,14 +259,14 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                "Grapes Leaf",
+                                "මිදි පත්‍ර",
                                 style:GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
-                                "Identifier",
+                                "හඳුනාගැනීම",
                                 style:GoogleFonts.poppins(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w400,
@@ -284,7 +287,7 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) {
-                            return ImagePickerPageTea();
+                            return ImagePickerPageTeaSinhala();
                           }),
                         );
                       },
@@ -305,14 +308,14 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                "Tea Leaf",
+                                "තේ පත්‍ර",
                                 style:GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
-                                "Identifier",
+                                "හඳුනාගැනීම",
                                 style:GoogleFonts.poppins(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w400,
@@ -339,7 +342,7 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) {
-                            return ImagePickerPageCones();
+                            return ImagePickerPageConesSinhala();
                           }),
                         );
                       },
@@ -360,14 +363,14 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                "Corn Leaf",
+                                "බඩ ඉරිඟු පත්‍ර",
                                 style:GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
-                                "Identifier",
+                                "හඳුනාගැනීම",
                                 style:GoogleFonts.poppins(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w400,
@@ -388,7 +391,7 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) {
-                            return ImagePickerPageSugarCane();
+                            return ImagePickerPageSugarCaneSinhala();
                           }),
                         );
                       },
@@ -409,14 +412,14 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                "Sugarcane Leaf",
+                                "උක් පත්‍ර",
                                 style:GoogleFonts.poppins(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
-                                "Identifier",
+                                "හඳුනාගැනීම",
                                 style:GoogleFonts.poppins(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w400,
